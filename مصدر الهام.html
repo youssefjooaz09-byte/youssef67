@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YOUSSEF RADY | Inspire Your Future</title>
+<meta name="description" content="منصة تحفيزية: قصص ملهمة، مقولات، فيديوهات مصرية، تطوير ذات، وأهداف. YOUSSEF RADY — Inspire Your Future">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b0e;--bg2:#121217;--gold:#e6c46a;--gold2:#b8902f;--text:#f2efe6;--muted:#a7a395;--line:rgba(230,196,106,.18);--glass:rgba(255,255,255,.05);--r:22px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);line-height:1.9;overflow-x:hidden;background-image:radial-gradient(circle at 15% 0%,rgba(230,196,106,.08),transparent 40%),radial-gradient(circle at 90% 60%,rgba(230,196,106,.05),transparent 40%)}
+a{text-decoration:none;color:inherit}button,input,textarea{font-family:inherit}
+.container{width:min(1120px,92%);margin:auto}
+section{padding:80px 0}section.alt{background:var(--bg2)}
+.head{text-align:center;margin-bottom:38px}
+.head h2{font-size:2rem;font-weight:800}.head h2 span{color:var(--gold);text-shadow:0 0 18px rgba(230,196,106,.45)}
+.head p{color:var(--muted)}
+.head::after{content:"";display:block;width:70px;height:3px;margin:12px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:var(--r);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:.35s}
+.glass:hover{border-color:rgba(230,196,106,.5);box-shadow:0 0 28px rgba(230,196,106,.12)}
+.grid{display:grid;gap:20px}.g3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}.g4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.btn{display:inline-block;border:none;cursor:pointer;font-weight:800;padding:12px 30px;border-radius:50px;transition:.3s;font-size:1rem}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1405;box-shadow:0 0 22px rgba(230,196,106,.35)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 0 34px rgba(230,196,106,.6)}
+.btn-line{background:none;border:1px solid var(--gold);color:var(--gold)}.btn-line:hover{background:var(--gold);color:#1a1405}
+.btn-sm{padding:5px 18px;font-size:.9rem}
+.chip{display:inline-block;background:rgba(230,196,106,.12);color:var(--gold);border-radius:50px;padding:0 14px;font-size:.8rem;font-weight:700}
+.empty{text-align:center;color:var(--muted)}
+.pbar{height:8px;background:rgba(255,255,255,.08);border-radius:8px;overflow:hidden;margin:8px 0 2px}.pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold2),var(--gold));transition:width .5s}
+.pnum{font-size:.85rem;color:var(--muted)}
+
+/* topbar + drawer */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:80;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 4%;background:rgba(11,11,14,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.logo{font-family:'Orbitron',sans-serif;font-weight:900;letter-spacing:1px;color:var(--gold);text-shadow:0 0 14px rgba(230,196,106,.5)}
+#burger{background:none;border:1px solid var(--line);border-radius:12px;width:46px;height:42px;cursor:pointer;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;transition:.3s}
+#burger:hover{border-color:var(--gold)}#burger i{display:block;width:22px;height:2.5px;background:var(--text);border-radius:3px;transition:.3s}
+#burger.on i:nth-child(1){transform:translateY(8.5px) rotate(45deg)}#burger.on i:nth-child(2){opacity:0}#burger.on i:nth-child(3){transform:translateY(-8.5px) rotate(-45deg)}
+#progress{position:fixed;top:0;right:0;height:3px;width:0;z-index:90;background:linear-gradient(90deg,var(--gold2),var(--gold),#fff3c4)}
+#overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:.35s;z-index:85}#overlay.on{opacity:1;pointer-events:auto}
+#drawer{position:fixed;top:0;left:0;bottom:0;width:min(330px,86%);background:#0e0e12;border-right:1px solid var(--gold);box-shadow:0 0 40px rgba(230,196,106,.2);z-index:95;transform:translateX(-105%);transition:.4s;padding:20px 16px;overflow-y:auto}#drawer.on{transform:none}
+.d-head{padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:10px}.d-head b{font-family:'Orbitron',sans-serif;color:var(--gold)}.d-head small{display:block;color:var(--muted)}
+#drawer nav a{display:block;padding:9px 14px;border-radius:12px;color:var(--muted);font-weight:600;transition:.25s}
+#drawer nav a:hover,#drawer nav a.active{background:rgba(230,196,106,.12);color:var(--gold);transform:translateX(6px)}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;text-align:center;padding-top:90px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(230,196,106,.22),transparent 65%);top:8%;left:50%;transform:translateX(-50%);z-index:-1;animation:glow 6s ease-in-out infinite}
+@keyframes glow{50%{opacity:.5;transform:translateX(-50%) scale(1.15)}}
+.brand{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(2.2rem,8vw,5rem);line-height:1.2;letter-spacing:2px;direction:ltr}
+.brand span{background:linear-gradient(90deg,var(--gold),#fff3c4,var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 18px rgba(230,196,106,.5))}
+.tagline{font-family:'Orbitron',sans-serif;color:var(--gold);letter-spacing:5px;font-size:clamp(.8rem,2.5vw,1.2rem);direction:ltr;margin:6px 0 16px}
+.welcome{font-size:1.25rem;color:var(--muted);max-width:620px;margin:0 auto 28px}
+.hero-stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:44px}
+.hero-stats div{padding:8px 24px}.hero-stats b{display:block;font-family:'Orbitron',sans-serif;font-size:1.5rem;color:var(--gold)}.hero-stats small{color:var(--muted)}
+
+/* search */
+.search{display:block;width:min(560px,100%);margin:0 auto 20px;background:var(--glass);border:1px solid var(--line);color:var(--text);border-radius:50px;padding:12px 24px;font-size:1rem;outline:none;transition:.3s}.search:focus{border-color:var(--gold)}
+.sres{display:grid;gap:10px;max-width:760px;margin:auto}
+.sres button{display:flex;gap:12px;align-items:center;text-align:right;background:var(--glass);border:1px solid var(--line);color:var(--text);border-radius:16px;padding:10px 16px;cursor:pointer;transition:.3s}.sres button:hover{border-color:var(--gold)}.sres small{color:var(--gold);margin-right:auto;white-space:nowrap}
+
+/* daily */
+.daily{max-width:840px;margin:auto;padding:44px 32px;text-align:center}
+.daily .mark{font-size:4rem;line-height:.6;color:var(--gold);opacity:.5}
+.daily blockquote{font-size:clamp(1.4rem,3.6vw,2.1rem);line-height:2;margin:10px 0;transition:opacity .35s}
+.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.actions button{background:var(--glass);border:1px solid var(--line);color:var(--text);border-radius:50px;padding:7px 18px;font-weight:700;cursor:pointer;transition:.3s}.actions button:hover{border-color:var(--gold);color:var(--gold)}.actions button.on{color:#ff7a8a;border-color:#ff7a8a}
+.challenge{max-width:840px;margin:22px auto 0;padding:18px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between}
+.challenge b{color:var(--gold)}.challenge label{display:flex;gap:10px;align-items:center;cursor:pointer;font-weight:700}.challenge input{width:22px;height:22px;accent-color:var(--gold)}
+.streak{background:rgba(230,196,106,.12);border-radius:50px;padding:2px 16px;font-weight:700;font-size:.9rem}
+
+/* cards */
+.poster{height:130px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:3.4rem;margin-bottom:12px;position:relative;overflow:hidden}
+.poster::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.18),transparent 55%)}
+.p0{background:linear-gradient(135deg,#3b2d0e,#8a6a1f)}.p1{background:linear-gradient(135deg,#1c1c24,#4a4a5e)}.p2{background:linear-gradient(135deg,#2e2208,#b8902f)}.p3{background:linear-gradient(135deg,#10222b,#2e6b80)}
+.p4{background:linear-gradient(135deg,#2b1410,#a8503a)}.p5{background:linear-gradient(135deg,#1a1633,#5b4aa8)}.p6{background:linear-gradient(135deg,#0f2a1d,#2f8a5c)}.p7{background:linear-gradient(135deg,#0d1b2e,#2f5fa8)}
+.card{padding:22px;display:flex;flex-direction:column}.card h3{margin:6px 0 2px}.card small{color:var(--gold);font-weight:700}.card p{color:var(--muted);margin:8px 0 14px;flex:1;font-size:.95rem}
+.card .row{display:flex;gap:8px;align-items:center;justify-content:space-between}
+.fav{background:none;border:none;font-size:1.3rem;cursor:pointer;transition:.3s}.fav:hover{transform:scale(1.25)}
+.vthumb{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;margin-bottom:12px;display:flex;align-items:center;justify-content:center;font-size:2.8rem;cursor:pointer}
+.vthumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vthumb .pl{position:relative;width:52px;height:52px;border-radius:50%;background:rgba(230,196,106,.92);color:#1a1405;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:.3s}.vthumb:hover .pl{transform:scale(1.15)}
+.filters{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+.filters button{background:var(--glass);border:1px solid var(--line);color:var(--muted);font-weight:700;padding:5px 18px;border-radius:50px;cursor:pointer;transition:.3s}.filters button.on,.filters button:hover{background:var(--gold);border-color:var(--gold);color:#1a1405}
+.qcard{padding:22px;display:flex;flex-direction:column;justify-content:space-between;gap:14px}.qcard p{font-size:1.18rem;line-height:1.95}
+.qcard .row{display:flex;justify-content:space-between;align-items:center}
+.mini{background:none;border:none;font-size:1.1rem;cursor:pointer;margin-left:6px;transition:.3s}.mini:hover{transform:scale(1.25)}
+.more{text-align:center;margin-top:28px}.count{color:var(--muted);font-size:.9rem;margin-top:8px}
+.featured{display:grid;grid-template-columns:1.3fr 1fr;gap:26px;padding:22px;align-items:center}
+.featured .vthumb{margin:0}
+details.art{padding:6px 22px;margin-bottom:14px}details.art summary{cursor:pointer;font-weight:800;padding:12px 0;list-style:none;display:flex;justify-content:space-between}details.art summary::after{content:"+";color:var(--gold);font-size:1.5rem}details.art[open] summary::after{content:"−"}
+details.art p,details.art li{color:var(--muted)}details.art ol{padding-right:22px;margin:8px 0}details.art .ex{background:rgba(230,196,106,.08);border-right:3px solid var(--gold);padding:8px 14px;border-radius:10px;margin:10px 0}details.art small{color:var(--gold)}
+.paths a{padding:24px;text-align:center;display:block}.paths .ic{font-size:2.2rem}.paths p{color:var(--muted);font-size:.92rem}
+
+/* goals */
+.goalform,.winform{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:24px}
+.goalform input,.winform input,.taskForm input,.submit input,.submit textarea,.tset input{background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:10px 14px;font-size:1rem;outline:none;transition:.3s}
+input:focus,textarea:focus{border-color:var(--gold)}
+.goalform input[type=text],.winform input[type=text]{flex:1;min-width:200px}
+.goal{padding:20px}.g-head{display:flex;justify-content:space-between;align-items:center}.g-head h3{font-size:1.1rem}
+.x{background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem}.x:hover{color:#ff7a8a}
+.tasks{list-style:none;margin:10px 0}.tasks li{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:4px 0;border-bottom:1px dashed var(--line)}
+.tasks label{display:flex;gap:8px;align-items:center;cursor:pointer;flex:1}.tasks input{accent-color:var(--gold)}.tasks .done{text-decoration:line-through;opacity:.55}.tasks small{color:var(--muted)}
+.taskForm{display:flex;gap:6px;margin-top:8px}.taskForm input:first-child{flex:1;min-width:0}.taskForm input[type=date]{width:130px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}
+.wins{padding:22px}.wins ul{list-style:none;margin-top:10px}.wins li{padding:4px 0;border-bottom:1px dashed var(--line);color:var(--muted)}.wins li small{color:var(--gold);margin-left:8px}
+.wc{padding:20px}.wc p{color:var(--muted);font-size:.92rem;margin-bottom:10px}
+.days{display:flex;gap:6px;flex-wrap:wrap}.day{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--text);cursor:pointer;font-weight:700}.day.on{background:var(--gold);color:#1a1405;border-color:var(--gold)}
+.note{color:var(--muted);font-size:.85rem;text-align:center;margin-top:16px}
+
+/* calm */
+.calm{padding:34px;text-align:center;transition:background .6s}
+.calm.b1{background:linear-gradient(135deg,#10222b,#0b0b0e)}.calm.b2{background:linear-gradient(135deg,#1a1633,#0b0b0e)}.calm.b3{background:linear-gradient(135deg,#0f2a1d,#0b0b0e)}.calm.b4{background:linear-gradient(135deg,#2b2008,#0b0b0e)}
+.tdisp{font-family:'Orbitron',sans-serif;font-size:clamp(3rem,12vw,5.5rem);font-weight:900;color:var(--gold);text-shadow:0 0 30px rgba(230,196,106,.5)}
+.tset{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:10px 0 14px;color:var(--muted)}.tset input{width:70px;text-align:center}
+.bgs{display:flex;gap:10px;justify-content:center;margin:12px 0}.bgs button{width:34px;height:34px;border-radius:50%;border:2px solid var(--line);cursor:pointer}
+.snds{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.phrase{font-size:1.2rem;color:var(--gold);min-height:2em;margin:14px 0}
+
+/* sources / about / contact */
+.src{padding:20px}.src h3{color:var(--gold);font-size:1.05rem}.src p{color:var(--muted);font-size:.92rem}
+.about{display:grid;grid-template-columns:auto 1fr;gap:30px;padding:30px;align-items:center}
+.avatar{width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1405;font-family:'Orbitron',sans-serif;font-weight:900;font-size:2.6rem;display:flex;align-items:center;justify-content:center;box-shadow:0 0 34px rgba(230,196,106,.4)}
+.about p{color:var(--muted);margin-bottom:8px}.about b{color:var(--gold)}
+.tl{border-right:2px dashed var(--line);padding-right:20px;margin-top:14px}.tl div{position:relative;padding:4px 0}.tl div::before{content:"";position:absolute;right:-27px;top:14px;width:12px;height:12px;border-radius:50%;background:var(--gold)}
+.socials{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:34px}.socials a,.socials button{padding:12px 28px;font-weight:700;color:var(--text);cursor:pointer;background:var(--glass);border:1px solid var(--line);border-radius:50px;transition:.3s}.socials a:hover,.socials button:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-4px)}
+.submit{max-width:620px;margin:auto;padding:26px}.submit label{display:block;font-weight:700;margin-bottom:2px}.submit input,.submit textarea{width:100%;margin-bottom:12px}.submit textarea{min-height:100px;resize:vertical}.submit .btn{width:100%}.submit .hint{color:var(--muted);font-size:.85rem;text-align:center;margin-top:8px}
+.msg{text-align:center;max-width:780px;margin:auto;padding:40px 30px}.msg p{font-size:1.3rem;line-height:2.2}.msg p::before{content:"“";display:block;font-size:4rem;line-height:.6;color:var(--gold);opacity:.5}
+
+footer{text-align:center;padding:36px 20px;border-top:1px solid var(--line);color:var(--muted)}
+footer button{background:none;border:none;color:var(--gold);cursor:pointer;font-weight:700}
+.credit{display:inline-block;margin-top:10px;font-weight:800;font-size:1.05rem;background:linear-gradient(90deg,var(--gold),#fff3c4,var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* modal + toast */
+.modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.72);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:18px}.modal.open{display:flex}
+.mbox{background:#14141a;border:1px solid var(--gold);border-radius:26px;padding:28px;max-width:660px;width:100%;max-height:90vh;overflow-y:auto;animation:pop .3s;box-shadow:0 0 50px rgba(230,196,106,.2)}
+@keyframes pop{from{transform:scale(.88);opacity:0}}
+.mbox h3{font-size:1.5rem;margin:4px 0}.mbox h4{color:var(--gold);margin:16px 0 4px}.mbox p,.mbox li{color:#d8d4c6}.mbox ul,.mbox ol{padding-right:22px}
+.mbox .lesson{background:rgba(230,196,106,.1);border-right:4px solid var(--gold);border-radius:12px;padding:10px 16px;margin-top:10px}
+.mbox a{color:var(--gold);text-decoration:underline}.mbox canvas{width:100%;border-radius:16px;margin:10px 0}
+.frame{aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;margin:12px 0}.frame.tall{aspect-ratio:9/16;max-height:62vh;margin-inline:auto}.frame iframe{width:100%;height:100%;border:0}
+.close{margin-top:18px;background:rgba(255,255,255,.07);border:1px solid var(--line);color:var(--text);border-radius:50px;padding:6px 26px;font-weight:700;cursor:pointer}
+.toast{position:fixed;bottom:26px;right:50%;transform:translateX(50%) translateY(90px);background:var(--gold);color:#1a1405;padding:8px 24px;border-radius:50px;font-weight:800;transition:.4s;z-index:120}.toast.show{transform:translateX(50%)}
+#top{position:fixed;bottom:22px;left:22px;width:46px;height:46px;border-radius:50%;border:none;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1405;font-size:1.3rem;cursor:pointer;z-index:70;opacity:0;pointer-events:none;transition:.3s}#top.show{opacity:1;pointer-events:auto}
+.reveal{opacity:0;transform:translateY(34px);transition:.8s}.reveal.show{opacity:1;transform:none}
+@media(max-width:820px){.featured,.about,.split{grid-template-columns:1fr}.about{text-align:center}.avatar{margin:auto}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div class="topbar">
+  <a href="#home" class="logo">YOUSSEF RADY</a>
+  <button id="burger" aria-label="القائمة"><i></i><i></i><i></i></button>
+</div>
+<div id="overlay"></div>
+<aside id="drawer">
+  <div class="d-head"><b>YOUSSEF RADY</b><small>Inspire Your Future</small></div>
+  <nav>
+    <a href="#home">🏠 الرئيسية</a><a href="#search">🔎 بحث</a><a href="#daily">✨ مقولة اليوم</a>
+    <a href="#stories">📖 القصص الملهمة</a><a href="#videos">🎬 الفيديوهات</a><a href="#quotes">💬 المقولات</a>
+    <a href="#develop">🌱 طوّر نفسك</a><a href="#goals">🎯 أحلامي وأهدافي</a><a href="#calm">🧘 ركن الهدوء والتركيز</a>
+    <a href="#favorites">❤️ المفضلة</a><a href="#sources">📚 مصادر الإلهام</a><a href="#about">👤 من أنا</a><a href="#contact">📡 تواصل معايا</a>
+  </nav>
+</aside>
+
+<main>
+<section class="hero" id="home"><div class="container">
+  <h1 class="brand">YOUSSEF <span>RADY</span></h1>
+  <div class="tagline">INSPIRE YOUR FUTURE</div>
+  <p class="welcome">رحلتك نحو نسخة أفضل من نفسك تبدأ من هنا</p>
+  <a href="#daily" class="btn btn-gold">ابدأ رحلتك 🚀</a>
+  <a href="#stories" class="btn btn-line" style="margin-right:8px">اقرأ قصة ملهمة</a>
+  <div class="hero-stats">
+    <div class="glass"><b id="sQ">0</b><small>مقولة</small></div><div class="glass"><b id="sS">0</b><small>قصة</small></div>
+    <div class="glass"><b id="sV">0</b><small>فيديو</small></div><div class="glass"><b id="sA">0</b><small>مقال</small></div>
+  </div>
+</div></section>
+
+<section id="search" class="alt"><div class="container reveal">
+  <div class="head"><h2>ابحث في <span>كل المحتوى</span></h2><p>قصص ومقولات وفيديوهات في مكان واحد</p></div>
+  <input class="search" id="gSearch" placeholder="🔎 اكتب كلمة: صبر، زويل، برمجة...">
+  <div class="sres" id="gRes"></div>
+</div></section>
+
+<section id="daily"><div class="container reveal">
+  <div class="head"><h2>مقولة <span>اليوم</span></h2><p id="today"></p></div>
+  <div class="daily glass">
+    <div class="mark">“</div><blockquote id="dq"></blockquote><span class="chip" id="dcat"></span>
+    <div class="actions">
+      <button id="newQ">🔀 مقولة تانية</button><button id="copyQ">📋 نسخ</button><button id="shareQ">📤 مشاركة</button>
+      <button id="imgQ">🖼️ حوّلها لصورة</button><button id="favQ">🤍 مفضلة</button>
+    </div>
+  </div>
+  <div class="challenge glass">
+    <div><b>🎯 تحدي اليوم:</b> <span id="chText"></span></div>
+    <label><input type="checkbox" id="chBox"> خلّصته</label><span class="streak" id="streak">🔥 0 يوم</span>
+  </div>
+</div></section>
+
+<section class="alt" id="latest"><div class="container reveal">
+  <div class="head"><h2>أحدث القصص <span>الملهمة</span></h2><p>ابدأ بقصة النهارده</p></div>
+  <div class="grid g3" id="latestGrid"></div>
+  <div class="more"><a href="#stories" class="btn btn-line">كل القصص ⬇</a></div>
+</div></section>
+
+<section id="featured"><div class="container reveal">
+  <div class="head"><h2>فيديو <span>مميز</span></h2></div>
+  <div class="featured glass">
+    <div class="vthumb" id="fThumb"><img src="https://i.ytimg.com/vi/x1HEUPDwcqM/hqdefault.jpg" alt="من طفل فضولي إلى عالم نال نوبل" onerror="this.style.display='none'"><div class="pl">▶</div></div>
+    <div><span class="chip">🇪🇬 قصة مصرية</span><h3 style="margin:8px 0">من طفل فضولي إلى عالم نال نوبل</h3>
+    <p style="color:var(--muted)">رحلة د. أحمد زويل من سؤال بسيط في الطفولة إلى جائزة نوبل في الكيمياء. اضغط للتشغيل.</p>
+    <a class="chip" href="https://www.youtube.com/watch?v=x1HEUPDwcqM" target="_blank" rel="noopener">افتحه على يوتيوب ↗</a></div>
+  </div>
+</div></section>
+
+<section class="alt" id="paths"><div class="container reveal">
+  <div class="head"><h2>ابدأ <span>خطوة عملية</span></h2><p>مش بس كلام إيجابي، خطوة تتنفذ</p></div>
+  <div class="grid g4 paths">
+    <a href="#develop" class="glass"><div class="ic">🌱</div><h3>طوّر نفسك</h3><p>مقالات عملية بخطوات واضحة.</p></a>
+    <a href="#goals" class="glass"><div class="ic">🎯</div><h3>أحلامي وأهدافي</h3><p>قسّم هدفك لمهام وتابع إنجازك.</p></a>
+    <a href="#calm" class="glass"><div class="ic">🧘</div><h3>ركن التركيز</h3><p>مؤقت وأصوات هادية.</p></a>
+    <a href="#goals" class="glass"><div class="ic">🏆</div><h3>تحديات الأسبوع</h3><p>انضم وكمّل ٧ أيام.</p></a>
+  </div>
+</div></section>
+
+<section id="stories"><div class="container reveal">
+  <div class="head"><h2>مكتبة القصص <span>الملهمة</span></h2><p>قصص موثّقة بمصادرها، مصرية وعالمية</p></div>
+  <div class="filters" id="sFilters"></div>
+  <div class="grid g3" id="sGrid"></div>
+  <p class="note">القصص مكتوبة كملخصات من مصادر معروفة، وكل قصة معاها روابط المصادر.</p>
+</div></section>
+
+<section class="alt" id="videos"><div class="container reveal">
+  <div class="head"><h2>مكتبة الفيديوهات <span>التحفيزية</span></h2><p>محتوى عربي ومصري</p></div>
+  <div class="filters" id="vFilters"></div>
+  <div class="grid g3" id="vGrid"></div>
+  <p class="note">الكروت اللي مكتوب عليها «نتائج بحث» بتفتح نتايج على يوتيوب مش فيديو واحد بعينه، راجع أي فيديو قبل ما تعتمد عليه. التشغيل داخل الموقع بيشتغل لو صاحب الفيديو سامح بالتضمين.</p>
+</div></section>
+
+<section id="quotes"><div class="container reveal">
+  <div class="head"><h2>مكتبة <span>المقولات</span></h2><p id="qTotal"></p></div>
+  <div class="filters" id="qFilters"></div>
+  <input class="search" id="qSearch" placeholder="🔎 دوّر في المقولات...">
+  <div class="grid g3" id="qGrid"></div>
+  <div class="more"><button class="btn btn-gold" id="moreBtn">عرض المزيد ⬇</button><div class="count" id="qCount"></div></div>
+  <p class="note">كل المقولات هنا من كتابة الموقع ومش منسوبة لحد. أي مقولة منسوبة لشخص معروف لازم تتوثّق بمصدرها قبل إضافتها.</p>
+</div></section>
+
+<section class="alt" id="develop"><div class="container reveal">
+  <div class="head"><h2>طوّر <span>نفسك</span></h2><p>مقالات عملية فيها أمثلة وخطوات</p></div>
+  <div id="artList" style="max-width:820px;margin:auto"></div>
+</div></section>
+
+<section id="goals"><div class="container reveal">
+  <div class="head"><h2>أحلامي <span>وأهدافي</span></h2><p>اكتب هدفك، قسّمه لمهام، وتابع نسبة إنجازك</p></div>
+  <form class="goalform" id="goalForm"><input type="text" id="gTitle" placeholder="🎯 هدفي الكبير..." required><input type="date" id="gDue" aria-label="الموعد المستهدف"><button class="btn btn-gold" type="submit">إضافة هدف</button></form>
+  <div class="grid g3" id="goalList"></div>
+  <div class="split">
+    <div class="wins glass"><h3>🏅 إنجازاتي الأسبوعية (<span id="winCount">0</span> آخر ٧ أيام)</h3>
+      <form class="winform" id="winForm" style="margin:10px 0 0"><input type="text" id="winText" placeholder="سجّل إنجاز حققته..."><button class="btn btn-gold btn-sm" type="submit">＋</button></form>
+      <ul id="winList"></ul></div>
+    <div><h3 style="margin-bottom:10px">🏆 تحديات الأسبوع</h3><div class="grid" id="weekList"></div></div>
+  </div>
+  <p class="note">كل ده بيتحفظ محلياً على جهازك فقط. المزامنة بين الأجهزة تحتاج نظام حسابات وقاعدة بيانات.</p>
+</div></section>
+
+<section class="alt" id="calm"><div class="container reveal">
+  <div class="head"><h2>ركن الهدوء <span>والتركيز</span></h2><p>جلسة تركيز، استراحة، وصوت هادي (اختياري)</p></div>
+  <div class="calm glass b1" id="calmBox" style="max-width:720px;margin:auto">
+    <div id="tMode" style="color:var(--muted)">🎯 جلسة تركيز</div>
+    <div class="tdisp" id="tDisp">25:00</div>
+    <div class="tset"><label>تركيز (د) <input type="number" id="fMin" value="25" min="1" max="120"></label><label>راحة (د) <input type="number" id="bMin" value="5" min="1" max="60"></label></div>
+    <div class="actions"><button id="tStart">▶ ابدأ</button><button id="tReset">↺ إعادة</button><button id="mFocus">🎯 تركيز</button><button id="mBreak">☕ راحة</button></div>
+    <div class="phrase" id="phrase">خطوة صغيرة النهارده تكفي.</div>
+    <button class="btn btn-line btn-sm" id="newPhrase">عبارة جديدة</button>
+    <div class="bgs" id="bgs"><button style="background:#10222b" data-b="b1" aria-label="خلفية 1"></button><button style="background:#1a1633" data-b="b2" aria-label="خلفية 2"></button><button style="background:#0f2a1d" data-b="b3" aria-label="خلفية 3"></button><button style="background:#2b2008" data-b="b4" aria-label="خلفية 4"></button></div>
+    <div class="snds"><button class="btn btn-line btn-sm" data-snd="rain">🌧️ مطر</button><button class="btn btn-line btn-sm" data-snd="waves">🌊 أمواج</button><button class="btn btn-line btn-sm" data-snd="wind">🍃 رياح</button><button class="btn btn-line btn-sm" data-snd="off">🔇 إيقاف</button>
+      <input type="range" id="vol" min="0.05" max="0.6" step="0.05" value="0.25" aria-label="مستوى الصوت"></div>
+    <p class="note">الأصوات بتتولّد جوه المتصفح (من غير ملفات صوت)، ومبتشتغلش إلا بعد ما تدوس عليها.</p>
+  </div>
+</div></section>
+
+<section id="favorites"><div class="container reveal">
+  <div class="head"><h2>مفضلتي ❤️</h2><p>محفوظة على جهازك</p></div>
+  <h3 style="margin:10px 0">💬 مقولات</h3><div class="grid g3" id="favQ2"></div>
+  <h3 style="margin:24px 0 10px">📖 قصص</h3><div class="grid g3" id="favS"></div>
+  <h3 style="margin:24px 0 10px">🎬 فيديوهات</h3><div class="grid g3" id="favV"></div>
+  <p class="empty" id="favEmpty" style="margin-top:20px">لسه مفيش مفضلة. دوس على 🤍 في أي مقولة أو قصة أو فيديو.</p>
+</div></section>
+
+<section class="alt" id="sources"><div class="container reveal">
+  <div class="head"><h2>مصادر الإلهام <span>والمعرفة</span></h2><p>أماكن موثوقة تتعلم منها (روابط خارجية)</p></div>
+  <div class="grid g3" id="srcGrid"></div>
+</div></section>
+
+<section id="about"><div class="container reveal">
+  <div class="head"><h2>من <span>أنا؟</span></h2></div>
+  <div class="about glass">
+    <div class="avatar" role="img" aria-label="الحرف الأول من اسم يوسف راضي">YR</div>
+    <div id="aboutBox"></div>
+  </div>
+</div></section>
+
+<section class="alt" id="contact"><div class="container reveal">
+  <div class="head"><h2>تواصل <span>معايا</span></h2><p>يسعدني أسمع منك</p></div>
+  <div class="socials">
+    <a href="https://www.facebook.com/youssef.rady.377876?sfnsn=scwspwa&mibextid=RUbZ1f" target="_blank" rel="noopener">👍 فيسبوك</a>
+    <a href="https://www.instagram.com/youssef_joo039/" target="_blank" rel="noopener">📸 إنستجرام</a>
+    <button id="waBtn">💬 تواصل على واتساب</button>
+  </div>
+  <div class="head" style="margin-bottom:20px"><h2>شاركنا <span>فكرتك</span> 💡</h2><p>عندك فكرة؟ ابعتها وهتوصل لصاحب الموقع</p></div>
+  <form class="submit glass" id="form">
+    <label for="fName">الاسم الثلاثي</label><input id="fName" placeholder="مثال: أحمد محمد علي" required>
+    <label for="fIdea">اسم الفكرة</label><input id="fIdea" placeholder="اسم فكرتك في كلمات قليلة" required>
+    <label for="fMsg">الرسالة</label><textarea id="fMsg" placeholder="اشرح فكرتك..." required></textarea>
+    <button class="btn btn-gold" type="submit">📨 إرسال الفكرة</button>
+    <div class="hint">هيتفتح واتساب برسالة جاهزة، وكل اللي عليك تدوس «إرسال».</div>
+  </form>
+</div></section>
+
+<section id="message"><div class="container reveal"><div class="msg glass">
+  <p>مش لازم تكون وصلت علشان تبدأ، ومش لازم تكون عارف كل حاجة علشان تتعلم. كل خطوة صغيرة بتاخدها النهارده ممكن تكون بداية لحاجة كبيرة في المستقبل. ابدأ من مكانك، استخدم اللي معاك، واتقدم خطوة كل يوم.</p>
+</div></div></section>
+</main>
+
+<footer>
+  <div>© <span id="year"></span> YOUSSEF RADY — Inspire Your Future · <button id="privBtn">سياسة الخصوصية</button></div>
+  <div class="credit">صُمّم بواسطة يوسف راضي — مهندس سوفت وير قادم بقوة نحو المستقبل 🚀</div>
+</footer>
+<button id="top" aria-label="لفوق">↑</button>
+<div class="modal" id="modal"><div class="mbox" id="mBox"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============ المقولات (٢٤٠) ============ */
+const QDATA={
+'النجاح والطموح':['الطموح بيبدأ لما ترفض تكتفي بالمكان اللي واقف فيه.','النجاح مش صدفة، ده نتيجة قرارات صغيرة اتكررت كتير.','احلم بحجم يخوّفك، واشتغل بحجم يطمّنك.','الهدف الواضح نص الطريق.','مش مهم تبدأ منين، المهم توصل فين.','الناجحين مش أذكى منك، هما بس كمّلوا لما غيرهم وقف.','كل يوم بتشتغل فيه على حلمك هو يوم مش ضايع.','لا تستنى الفرصة، ابنيها.','النجاح الحقيقي إنك تبقى أفضل من نفسك امبارح.','طموحك مسؤوليتك، محدش هيشتغل عليه بدالك.','اللي عايز يوصل بيلاقي طريق، واللي مش عايز بيلاقي عذر.','الإنجاز الكبير مجموع إنجازات صغيرة ما اتشافتش.','حدد نجاحك بنفسك قبل ما الناس تحدده ليك.','خلّي هدفك قدام عينك كل يوم.','كل مستوى جديد بيحتاج نسخة جديدة منك.','النجاح بيحب اللي بيتعلم بسرعة وبيتحرك بسرعة.','متقيسش نجاحك بالمقارنة، قيسه بالتقدّم.','ارفع سقف حلمك، وزوّد جهدك بنفس القدر.','الفرق بين الحلم والخطة تاريخ.','اشتغل بصمت، وسيب نتيجتك تتكلم.','كل قمة بدأت بخطوة من تحت.','مش لازم تكون الأفضل، كفاية تبقى أفضل من إمبارح.','الطموح من غير عمل زي العربية من غير بنزين.','اختار معركتك صح، وادّيها كل تركيزك.','اللي بيحلم وهو صاحي بيغيّر مصيره.','النجاح بيحتاج رؤية، وجرأة، واستمرار.','ما تنتظرش الظروف المثالية، اصنع ظروفك.','كل تحدي بتعديه بيرفع مستواك.','أصعب خطوة هي الأولى، وبعدها بتبقى أسهل.','اكتب حلمك، وحوّله لخطة، وابدأ النهارده.'],
+'الصبر والاستمرار':['الصبر مش إنك تستنى، الصبر إنك تفضل شغال وإنت مستني.','اللي بيكمّل ببطء أحسن من اللي بيقف.','الشجرة الكبيرة بتاخد سنين، وإنت كمان.','كل يوم صغير بتكمّله بيضيف للنتيجة الكبيرة.','الاستمرارية أقوى من الموهبة لما الموهبة تتعب.','لو تعبت ارتاح، بس متسيبش.','مش لازم تسرع، لازم تكمّل.','الأيام الصعبة جزء من القصة مش نهايتها.','النتيجة بتتأخر، بس مش بتضيع.','صبرك النهارده هو فخرك بكرة.','اللي بيصبر على التعب بيستمتع بالنتيجة.','مفيش طريق من غير مطبات.','افرح بكل تقدّم صغير، هو دليل إنك ماشي.','قطرة قطرة، والمية بتثقب الصخر.','كمّل حتى لو بسرعة السلحفاة.','الاستمرار هو السر اللي محدش بيحب يسمعه.','الراحة مش استسلام، الراحة شحن.','لما الحماس يخلص، العادة هي اللي تكمّل.','اللي بيبني على مهل بيبني ثابت.','النهارده يوم واحد، كمّله وبس.','الطريق بيبان أطول لما تبصله كله مرة واحدة.','اتعلّم تحب العملية مش النتيجة بس.','كل مرة بتقوم فيها بتبقى أقوى.','متقارنش سرعتك بسرعة غيرك.','الوقت اللي بتصبر فيه هو اللي بيجهّزك.','لو الطريق صعب، يبقى إنت ماشي في الاتجاه الصح.','ما تستعجلش النتايج، اهتم بالجودة.','كل يوم إضافي من الاستمرار هو فوز صغير.','اللي بيصبر بيشوف، واللي بيستسلم بيتخيل.','خطوة النهارده كفاية، وبكرة خطوة تانية.'],
+'الدراسة والتعلم':['المذاكرة بتبني مستقبلك حتى لو تعبتك النهارده.','ساعة مذاكرة بتركيز أحسن من أربع ساعات تشتّت.','اتعلم بالفهم مش بالحفظ بس.','اسأل لحد ما تفهم، السؤال مش عيب.','القراءة تمرين للعقل زي الرياضة للجسم.','اللي بيتعلم النهارده بيقود بكرة.','نظّم مذاكرتك والدرجات هتيجي لوحدها.','كل مادة صعبة بتبقى سهلة بعد ما تفهم أساسها.','العلم مش شهادة، العلم قدرة على الحل.','اتعلّم من كل حد وفي كل وقت.','راجع اللي اتعلمته، التكرار بيثبّت المعلومة.','علّم غيرك اللي عرفته، هتفهمه أعمق.','العلم بيفتح أبواب مفيش مفتاح غيره.','اجعل التعلّم عادة يومية مش مجهود موسمي.','المعلومة اللي تطبّقها بتفضل، واللي تحفظها بس بتروح.','قسّم المنهج على أيام وهتخلصه من غير ضغط.','كل كتاب بتخلصه بيضيف جزء جديد في تفكيرك.','الفضول بوابة المعرفة.','متخافش تغلط وإنت بتتعلم، الغلط جزء من الفهم.','اكتب ملخصاتك بإيدك وهتحفظها أسرع.','النوم الكويس نص المذاكرة.','اللي بيتعلم لنفسه بيعدّي أي امتحان.','ابدأ بالأصعب وإنت لسه فايق.','ابعد عن المشتتات ساعة واحدة وشوف الفرق.','مصدرك الأول للتعلم: فضولك.','تعلّم مهارة جديدة كل شهر.','المعرفة بتتضاعف لما تشاركها.','الامتحان لحظة، والعلم عمر.','ذاكر النهارده علشان بكرة تشكر نفسك.','كل ما اتعلمت أكتر، اكتشفت إنك محتاج تتعلم أكتر، وده حلو.'],
+'الثقة بالنفس':['ثقتك في نفسك أول خطوة، والباقي تفاصيل.','إنت أقدر مما بتتخيل.','متخليش خوفك يقرر بدالك.','كل خبير كان مبتدئ في يوم من الأيام.','صوتك الداخلي أهم من أصوات الناس.','اللي بيؤمن بنفسه بيقنع غيره.','اتكلم مع نفسك زي ما بتتكلم مع صاحبك.','غلطتك مش بتحدد قيمتك.','اسمح لنفسك تتعلم قدّام الناس.','الثقة بتتبني بالإنجازات الصغيرة.','مش لازم تكون كامل، لازم تكون صادق.','جرّب حتى لو خايف، الخوف بيقل مع التجربة.','كلام السلبيين بيقول عنهم أكتر ما بيقول عنك.','افتخر بخطواتك الصغيرة، هي أساس الكبيرة.','لما تثق في قدرتك، الفرص بتبان.','إنت نسخة أصلية، متحاولش تبقى نسخة من حد.','قول «هحاول» بدل «مش قادر».','اتعلّم تقول لأ من غير ذنب.','قيمتك مش بتتحدد برأي الناس فيك.','أنجز حاجة صغيرة النهارده وخد دفعة ثقة.','اللي بيتكلم عن نفسه بإيجابية بيتصرف بإيجابية.','الشجاعة مش غياب الخوف، الشجاعة إنك تتحرك معاه.','اعتمد على نفسك وهتتفاجئ بقدرتك.','اسمع للنقد المفيد وسيب الباقي.','افتكر الأوقات اللي نجحت فيها وإنت مش مصدق.','كل مرة بتواجه فيها خوفك بتكبر.','لو ماقتنعتش بنفسك، محدش هيقتنع بيك.','استثمر في نفسك، دي أحسن استثمار.','مفيش حد جاهز 100%، ابدأ وإنت بتجهّز.','إنت تستاهل مكان أحسن، ابدأ اشتغل عليه.'],
+'الانضباط والوقت':['الانضباط هو الجسر بين الهدف والإنجاز.','اللي بينظّم وقته بينظّم حياته.','ابدأ بأهم مهمة قبل ما اليوم يسرقك.','الحماس بيبدأ، والانضباط بيكمّل.','٢٥ دقيقة تركيز أحسن من ساعتين مشتتين.','اللي بيأجل النهارده هيتضغط بكرة.','رتّب يومك بالليل علشان تصحى بخطة.','كل دقيقة بتضيع مش هترجع، استثمر وقتك.','قول لأ للحاجات اللي بتبعدك عن هدفك.','العادة اللي بتتكرر بتبقى هوية.','مفيش وقت فاضي، في أولويات.','الجدول مش قيد، الجدول حرية.','اشتغل على مهمة واحدة مرة واحدة.','ابعد الموبايل وقت الشغل وهتتفاجئ بإنتاجك.','الاستيقاظ بدري بيدّيك ساعات هادية.','اكتب مهامك، العقل مش مخزن.','كافئ نفسك بعد ما تخلص مش قبل.','الراحة المنظمة جزء من الإنتاجية.','سيب التشتت وارجع للمهمة، كل مرة.','اللي بيحترم مواعيده بيحترمه الناس.','الانضباط مش قسوة على نفسك، ده حب ليها على المدى الطويل.','قسّم يومك لكتل: شغل، راحة، تعلم.','احسب وقتك زي ما بتحسب فلوسك.','مفيش بكرة اتغيّر فيه اللي منغيّرش النهارده.','خلّي أول ساعة في يومك ليك مش للموبايل.','اللي بيكمل شغله في ميعاده بيكسب راحة بالو.','كل مهمة صغيرة بتخلّصها بتخفف حمل ذهنك.','حدد وقت بداية ونهاية لكل مهمة.','الالتزام مع نفسك أصعب وأهم التزام.','اعمل النهارده اللي هتفتخر بيه أسبوع كامل.'],
+'البرمجة والإبداع':['الكود الحلو بيتكتب مرتين: مرة تشتغل ومرة تتحسّن.','كل مبرمج كبير كان بيشوف errors أكتر منك.','الـ bug مش عدو، ده معلّم.','اكتب كود يفهمه غيرك، وإنت بعد شهر.','اتعلّم تقرا كود غيرك، ده نص المهارة.','مشروع صغير بتخلصه أحسن من فكرة كبيرة متأجلة.','البرمجة بتعلّمك تفكّر، مش بس تكتب.','كل مشكلة كبيرة هي مجموعة مشاكل صغيرة.','جرّب، اكسر، وصلّح، ده طريق التعلّم.','الإبداع إنك تشوف الحل اللي الناس ما شافتوش.','ابني اللي نفسك تستخدمه.','الصبر على الـ debugging مهارة بتتبني.','اللي بيكتب كود كل يوم بيتحسّن كل يوم.','البساطة أصعب من التعقيد، وأجمل منه.','اتعلّم لغة واحدة كويس قبل ما تجري ورا اللغات.','النسخة الأولى مش لازم تكون مثالية، لازم تشتغل.','شارك مشاريعك، التغذية الراجعة بتسرّع تعلمك.','Git بيحمي شغلك وبيعلّمك تنظم نفسك.','اكتب التعليقات اللي بتشرح ليه، مش بس إيه.','كل تقنية جديدة هي فرصة مش ضغط.','التكنولوجيا بتتغير، لكن مهارة حل المشكلات بتفضل.','اتعلّم الأساسيات كويس، والباقي بيتبنى فوقها.','جرّب بنفسك الأول، وبعدين اسأل.','كل مشروع بتبنيه بيضيف لمحفظة أعمالك وخبرتك.','الإبداع في البرمجة إنك تحوّل فكرة لحاجة بيستخدمها الناس.','ابدأ بالمشكلة، مش بالأداة.','اتعلّم الخوارزميات علشان تفكّر أحسن، مش علشان المقابلات بس.','الكود النضيف بيوفّر وقت بكرة.','كل سطر كود بتكتبه هو تمرين على التفكير.','مستقبلك بيتكتب بسطور، فاكتب كويس.'],
+'الأمل والبدايات':['كل صبح صفحة جديدة، اكتب فيها حاجة حلوة.','مفيش ظلمة بتفضل للأبد.','النهارده فرصة جديدة من غير تكلفة.','اللي فات اتعلمت منه، واللي جاي هتبنيه.','الأمل مش إنك تتجاهل الصعب، الأمل إنك تؤمن إنه هيعدّي.','بداية متأخرة أحسن من لا بداية.','لسه في عمرك وقت تحقق اللي نفسك فيه.','كل نهاية بتفتح بداية.','اتفاءل، التفاؤل بيدّيك طاقة تشتغل بيها.','مفيش وقت متأخر تبدأ فيه حاجة حلوة.','النور بيجي بعد أصعب لحظة في الليل.','اسمح لنفسك تبدأ من جديد.','ابتسامة النهارده ممكن تغيّر يوم حد.','الدنيا بتدّيك فرص أكتر ما بتاخد.','اللي بيزرع أمل بيحصد فرص.','كل يوم جديد دعوة لنسخة أحسن منك.','متحكمش على حياتك من أسوأ يوم فيها.','البدايات الجديدة بتخوّف، بس بتحرر.','احتفظ بالأمل حتى لو الطريق ضبابي.','الحاجات الحلوة بتيجي لما تستعد لها.','خد نفس عميق، واتحرك خطوة.','اللي كان صعب امبارح، النهارده إنت أقوى منه.','اختار تبدأ بحاجة صغيرة تفرّحك.','الأمل هو أول خطوة في أي تغيير.','مفيش نهاية للطريق طول ما إنت لسه ماشي.','كل تجربة صعبة بتبني فيك جزء قوي.','انسى اللي وجعك، واحتفظ بدرسه.','النهارده تقدر تبدأ، حتى لو متأخر.','اللي بيبدأ من جديد بيعرف قيمة اللي عنده.','غدك أحسن لو بدأت النهارده.'],
+'الشغف والإصرار':['الشغف بيوصلك الأول، والإصرار هو اللي بيكمّل.','اعمل اللي بتحبه بإتقان، والباقي هييجي.','لما تحب اللي بتعمله، التعب بيبقى جزء من المتعة.','حلمك محتاج شغل، مش محتاج إذن.','الغلطة مش نهاية الطريق، دي درس مدفوع الثمن.','وقع سبع مرات وقوم تماني.','الفشل بيقولك إيه اللي ما نفعش، وإنت جرّب اللي بعده.','كل رفض بيقرّبك من القبول المناسب.','العقبة علامة إنك على الطريق مش علامة توقف.','لما تحس إنك هتستسلم، افتكر ليه بدأت.','الإصرار بيحوّل المستحيل لصعب والصعب لممكن.','القوة مش إنك متقعش، القوة إنك تقوم.','اللي بيحاول مرة كمان عمره ما بيبقى خسران.','دوّر على الحاجة اللي بتنسيك الوقت.','الإبداع بيبدأ لما تحب اللي بتعمله.','جرّب، اتعلم، عدّل، كمّل.','مفيش حد وصل من غير ما يقع، الفرق إنه قام.','الشغف مش لحظة حماس، الشغف التزام يومي.','لو بتحب اللي بتعمله، هتتحمل اللي قبله.','متسيبش حلمك علشان الناس مش فاهماه.','كل واحد جواه حاجة تستاهل تتعمل.','اشتغل على اللي بيشعل جواك النور.','اللي بيعمل شغله بحب بيسيب فيه بصمة.','التحدي بيكشف أحسن ما فيك.','اللي بيستسلم بدري بيضيع نتيجة قريبة.','اجعل كل فشل خطوة تدريب مش خطوة نهاية.','الصعب النهارده هيبقى عادي بعد ما تتعوّد.','حط هدفك قدامك وكمّل ناحيته مهما حصل.','مش لازم تكون الأقوى، لازم تكون الأكتر إصراراً.','اللي عنده سبب قوي يستحمل أي طريقة.']
+};
+const QUOTES=Object.entries(QDATA).flatMap(([c,a])=>a.map(t=>({t,c})));QUOTES.forEach((q,i)=>q.id=String(i));
+
+/* ============ التحديات ============ */
+const CHALLENGES=['اكتب هدف واحد صغير وخلّصه قبل آخر اليوم.','ابعت رسالة شكر لحد ساعدك.','اتمشى ١٥ دقيقة من غير موبايل.','اتعلم حاجة جديدة لمدة ٢٠ دقيقة.','رتّب مكان شغلك أو مذاكرتك.','اشرب مياه كفاية وكُل أكلة صحية.','اقرأ ١٠ صفحات من كتاب مفيد.','أنهِ جزء صغير من مشروع مؤجل.','خصص ٣٠ دقيقة لتعلم مهارة بدون تشتت.','رتّب أهداف الأسبوع الجاي في ٥ دقايق.','شوف محتوى تعليمي قصير وطبّق اللي فيه.','اكتب ٣ حاجات إنت ممتن ليها.','راجع اللي اتعلمته الأسبوع ده.','ساعد حد في حاجة صغيرة.'];
+const WEEK_CH=[{id:'w1',t:'تحدي القراءة',d:'اقرأ ١٠ صفحات كل يوم لمدة ٧ أيام.'},{id:'w2',t:'تحدي البداية المنظمة',d:'اصحَ في نفس الميعاد ٧ أيام ورتّب أول ساعة في يومك.'},{id:'w3',t:'تحدي المهارة الجديدة',d:'خصص ٢٠ دقيقة يومياً لتعلم مهارة واحدة.'},{id:'w4',t:'تحدي بدون تشتيت',d:'قلّل وقت السوشيال ميديا وركّز على هدف واحد كل يوم.'}];
+const PHRASES=['خطوة صغيرة النهارده تكفي.','ارجع للمهمة، بهدوء.','نَفَس عميق… وكمّل.','مش لازم تخلص كله، كفاية تبدأ.','ركّز على الدقيقة اللي قدامك.','إنت بتبني حاجة، حتى لو مش شايفها.','اهدى… أنت بتعمل كويس.'];
+
+/* ============ القصص (موثّقة بمصادرها) ============ */
+const SCATS=['النجاح بعد الفشل','من الصفر','رواد الأعمال','علماء ومخترعون','رياضيون','شباب وطموح','إصرار وتعلم','برمجة وتكنولوجيا'];
+const STORIES=[
+{id:'s1',cat:'علماء ومخترعون',e:'🔬',title:'أحمد زويل: من التعليم المصري لجائزة نوبل',who:'عالم كيمياء مصري',intro:'ابن مصر اللي بقى أول مصري يحصل على نوبل في العلوم، بعد رحلة طويلة من الفضول والدراسة والبحث.',
+ events:['وُلد سنة ١٩٤٦ ونشأ في مصر، وتخرج من جامعة الإسكندرية.','سافر للولايات المتحدة وحصل على الدكتوراه من جامعة بنسلفانيا.','اشتغل في معهد كاليفورنيا للتكنولوجيا (كالتك) وطوّر أبحاثه في رصد حركة الذرات بنبضات ليزر قصيرة جداً.','حصل على جائزة نوبل في الكيمياء سنة ١٩٩٩، وبعدها اهتم بدعم العلم في مصر ومنها مدينة زويل للعلوم والتكنولوجيا.'],
+ hard:['البعد عن البلد لسنين طويلة من أجل الدراسة والبحث.','العمل في مجال علمي معقّد محتاج صبر ودقة.'],turn:'أبحاثه في «كيمياء الفيمتو» اللي سمحت بمراقبة التفاعلات الكيميائية لحظة حدوثها.',
+ lessons:['الفضول والمثابرة بيصنعوا علم.','التعليم المتاح ممكن يكون بداية لطريق كبير.'],steps:['اسأل «ليه» و«إزاي» كل يوم.','اقرأ في مجالك أكتر من المطلوب منك.','اشتغل على مشروع بحثي صغير حتى لو بسيط.'],
+ src:[['الموقع الرسمي لجائزة نوبل','https://www.nobelprize.org/prizes/chemistry/1999/zewail/facts/'],['Nature Middle East','https://www.natureasia.com/ar/nmiddleeast/article/10.1038/nmiddleeast.2016.119'],['الجامعة الأمريكية بالقاهرة','https://www.aucegypt.edu/ar/news/stories/auc-mourns-loss-trustee-ahmed-zewail']]},
+{id:'s2',cat:'علماء ومخترعون',e:'❤️',title:'مجدي يعقوب: جراح القلب اللي خدم الناس',who:'جرّاح قلب مصري عالمي',intro:'من بلبيس في الشرقية لقمة جراحة القلب في العالم، مع اهتمام كبير بعلاج المرضى.',
+ events:['وُلد في ١٦ نوفمبر ١٩٣٥ في بلبيس بمحافظة الشرقية.','درس الطب في جامعة القاهرة وتخصص في جراحة القلب.','أصبح بروفيسور في جراحة القلب سنة ١٩٨٥، ومنحته ملكة بريطانيا لقب «سير» سنة ١٩٩١.','حصل على قلادة النيل العظمى سنة ٢٠١١، وساهم في تأسيس مؤسسة ومركز للقلب في أسوان.'],
+ hard:['بناء مسيرة مهنية طويلة بعيد عن مصر.','العمل في تخصص دقيق حياة المرضى فيه معلّقة على القرار.'],turn:'الجمع بين التفوق العلمي والعمل الإنساني، فبحسب كلامه المريض في مركزه بيتعالج بدون أجر.',
+ lessons:['النجاح الحقيقي لما يفيد غيرك.','الاحترام بين الطبيب والمريض أساس الثقة.'],steps:['اختار مجال تتقنه وطوّر مهارتك فيه باستمرار.','دوّر على طريقة تفيد بيها غيرك بما تعرفه.','اتعلم من جيل أصغر منك زي ما بتعلّمه.'],
+ src:[['كايرو ٢٤','https://www.cairo24.com/572142'],['صدى البلد','https://www.elbalad.news/6852688']]},
+{id:'s3',cat:'من الصفر',e:'⚽',title:'محمد صلاح: من نجريج لأكبر الملاعب',who:'لاعب كرة قدم مصري',intro:'ابن قرية نجريج في محافظة الغربية، وصل بالإصرار لأعلى مستويات الكرة الأوروبية.',
+ events:['بدأ في أندية مصرية ومنها المقاولون العرب.','احترف في بازل السويسري ثم تشيلسي الإنجليزي.','لعب في إيطاليا مع فيورنتينا وروما.','انضم لليفربول سنة ٢٠١٧ وحقق أرقاماً قياسية في الدوري الإنجليزي.'],
+ hard:['سنين طويلة من التنقل والتدريب قبل الوصول للعالمية.','مرحلة قلة المشاركة في تشيلسي.'],turn:'التألق في إيطاليا ثم الانتقال لليفربول سنة ٢٠١٧.',
+ lessons:['البداية من مكان بسيط لا تمنع الحلم.','المراحل البطيئة جزء من الطريق.'],steps:['اختار مهارة واحدة وطوّرها كل يوم.','لما فرصة متنفعش، دوّر على فرصة تانية.','حافظ على التدريب والانضباط حتى في أصعب فترة.'],
+ src:[['نون بوست','https://www.noonpost.com/43332/amp/'],['بوابة الأهرام','https://gate.ahram.org.eg/News/4845345.aspx']]},
+{id:'s4',cat:'إصرار وتعلم',e:'📚',title:'نجيب محفوظ: الكتابة بجانب الوظيفة',who:'أديب مصري حاصل على نوبل',intro:'موظف كتب باستمرار لعقود، لحد ما بقى أول أديب عربي ينال نوبل في الأدب.',
+ events:['وُلد سنة ١٩١١ في القاهرة، وكتب عن أحيائها.','اشتغل موظفاً حكومياً لسنين طويلة وكتب في وقته الخاص.','من أشهر أعماله الثلاثية: «بين القصرين» و«قصر الشوق» و«السكرية».','حصل على نوبل في الأدب سنة ١٩٨٨.'],
+ hard:['الموازنة بين الوظيفة والكتابة.','إصابته في هجوم سنة ١٩٩٤ أثّرت على قدرته على الكتابة.'],turn:'نجاح أعماله الروائية وانتشارها حتى وصلت للعالمية.',
+ lessons:['الاستمرار اليومي حتى في وقت ضيق بيصنع أعمال تعيش.','الالتزام بالكتابة أهم من انتظار الإلهام.'],steps:['خصص وقت ثابت يومياً لمشروعك الشخصي.','اكتب ولو صفحة واحدة كل يوم.','كمّل حتى لو ظروفك اتغيرت.'],
+ src:[['الموقع الرسمي لجائزة نوبل','https://www.nobelprize.org/prizes/literature/1988/mahfouz/facts/'],['Britannica','https://www.britannica.com/biography/Naguib-Mahfouz']]},
+{id:'s5',cat:'النجاح بعد الفشل',e:'📖',title:'جيه كيه رولينج: من الرفض لسلسلة عالمية',who:'روائية بريطانية',intro:'كتبت أول روايات هاري بوتر في فترة صعبة، وواجهت رفضاً قبل ما تلاقي دار تنشر لها.',
+ events:['كتبت مخطوطة «هاري بوتر وحجر الفيلسوف» في أوقات متفرقة.','أرسلتها لدور نشر وانرفضت من عدد منها.','وافقت دار بلومزبري على نشرها، وصدرت في بريطانيا سنة ١٩٩٧.','بعد كده بقت السلسلة من أشهر سلاسل الأدب في العالم.'],
+ hard:['ظروف مادية صعبة أثناء الكتابة.','رفض متكرر من الناشرين.'],turn:'موافقة دار بلومزبري على نشر الرواية سنة ١٩٩٧.',
+ lessons:['الرفض لا يعني إن عملك سيئ.','الاستمرار في الإرسال والتحسين بيفتح الباب.'],steps:['خلّص عملك الأول حتى لو مش مثالي.','اعرضه على أكتر من جهة وخد الملاحظات.','راجع وطوّر، وماتعتبرش الرفض حكم نهائي.'],
+ src:[['Britannica','https://www.britannica.com/biography/J-K-Rowling']]},
+{id:'s6',cat:'رواد الأعمال',e:'🍎',title:'ستيف جوبز: الخروج والعودة',who:'رائد أعمال ومؤسس آبل',intro:'شارك في تأسيس آبل، ثم ترك الشركة وبنى مشاريع جديدة قبل ما يرجع يقودها.',
+ events:['شارك في تأسيس آبل سنة ١٩٧٦.','ترك الشركة سنة ١٩٨٥ بعد خلافات داخلية.','أسس شركة NeXT واشترى استوديو أصبح بعد كده بيكسار.','رجع لآبل سنة ١٩٩٧ بعد استحواذها على NeXT، وقادها لمنتجات مثل iPod وiPhone.'],
+ hard:['الابتعاد عن الشركة اللي أسسها.','البدء من جديد في مشاريع تانية.'],turn:'العودة لآبل سنة ١٩٩٧ وإعادة تركيزها على منتجات أقل وأوضح.',
+ lessons:['الخروج من مكان ممكن يكون بداية تعلّم جديد.','التركيز على القليل الجيد بيصنع فرق.'],steps:['اكتب أهم ٣ أولويات في مشروعك.','أجّل أي حاجة مش بتخدمهم.','اتعلم من كل مرحلة حتى لو انتهت بشكل مش مثالي.'],
+ src:[['Britannica','https://www.britannica.com/biography/Steve-Jobs']]},
+{id:'s7',cat:'رياضيون',e:'🏀',title:'مايكل جوردان: من الاستبعاد للأسطورة',who:'لاعب كرة سلة',intro:'ما اتضمّش للفريق الأول في المدرسة في إحدى السنين، وبعدها بقى من أشهر اللاعبين في التاريخ.',
+ events:['في الثانوية اتحط في الفريق الأصغر بدل الأول في سنة.','لعب في جامعة نورث كارولينا وسجّل رمية الفوز في بطولة ١٩٨٢.','اختاره شيكاجو بولز سنة ١٩٨٤.','حقق ست بطولات في الدوري الأمريكي (١٩٩١–١٩٩٣ و١٩٩٦–١٩٩٨).'],
+ hard:['خيبة الاستبعاد من الفريق الأول.','ضغط المنافسة على أعلى مستوى.'],turn:'التدريب الإضافي بعد الاستبعاد ثم النجاح في الجامعة والدوري.',
+ lessons:['الإحباط ممكن يتحوّل لوقود تدريب.','الموهبة من غير تدريب مش كفاية.'],steps:['حدد مهارة ضعيفة وخصص لها وقت يومي.','قيّم تقدمك بأرقام بسيطة.','اعتبر كل رفض فرصة لتطوير نفسك.'],
+ src:[['Britannica','https://www.britannica.com/biography/Michael-Jordan']]},
+{id:'s8',cat:'علماء ومخترعون',e:'🪐',title:'ستيفن هوكينج: العلم رغم المرض',who:'فيزيائي بريطاني',intro:'اتشخّص بمرض عصبي وهو في العشرينات، وكمّل أبحاثه وكتبه اللي قرّبت العلم للناس.',
+ events:['وُلد سنة ١٩٤٢ ودرس في أكسفورد وكامبريدج.','اتشخّص بالتصلب الجانبي الضموري في أوائل العشرينات.','واصل أبحاثه في الكونيات والثقوب السوداء.','نشر كتاب «تاريخ موجز للزمن» سنة ١٩٨٨.'],
+ hard:['تراجع القدرة على الحركة والكلام مع الوقت.','الاعتماد على تقنيات مساعدة للتواصل.'],turn:'الاستمرار في البحث والكتابة وتقديم العلم للجمهور العام.',
+ lessons:['الظروف الصعبة ممكن تتحول لدافع.','الشغف بالمعرفة بيصنع طريق.'],steps:['اتعلم تستخدم الأدوات اللي بتسهّل عليك شغلك.','قسّم هدفك لمراحل صغيرة.','شارك اللي بتتعلمه ببساطة مع غيرك.'],
+ src:[['Britannica','https://www.britannica.com/biography/Stephen-Hawking']]},
+{id:'s9',cat:'شباب وطموح',e:'🎓',title:'ملالا يوسفزاي: صوت التعليم',who:'ناشطة في مجال تعليم البنات',intro:'بدأت تتكلم عن حق البنات في التعليم وهي صغيرة، وبقت أصغر حاصلة على نوبل للسلام.',
+ events:['نشأت في وادي سوات بباكستان ودافعت عن تعليم البنات.','تعرضت لهجوم مسلح سنة ٢٠١٢ وهي في الخامسة عشرة.','تعالجت في بريطانيا وواصلت حملتها.','حصلت على نوبل للسلام سنة ٢٠١٤ وهي في السابعة عشرة.'],
+ hard:['خطر على حياتها بسبب موقفها.','التعافي والبدء من جديد في بلد جديد.'],turn:'استمرارها في الحديث عن التعليم بعد الهجوم.',
+ lessons:['الصوت الصغير ممكن يصنع أثر كبير.','التعليم قضية تستاهل الشجاعة.'],steps:['اختار قضية تهمك وتكلم عنها.','ابدأ بنشاط صغير في محيطك.','كمّل حتى لو الطريق مش سهل.'],
+ src:[['Britannica','https://www.britannica.com/biography/Malala-Yousafzai'],['الموقع الرسمي لجائزة نوبل','https://www.nobelprize.org/prizes/peace/2014/yousafzai/facts/']]},
+{id:'s10',cat:'إصرار وتعلم',e:'🌟',title:'هيلين كيلر: التعلّم رغم الإعاقة',who:'كاتبة ومحاضرة أمريكية',intro:'فقدت السمع والبصر في طفولتها المبكرة، وبقت أول شخص بنفس الإعاقة يحصل على بكالوريوس.',
+ events:['فقدت السمع والبصر بعد مرض وهي في عمر نحو ١٩ شهراً.','بدأت التعلم مع معلمتها آن سوليفان سنة ١٨٨٧.','تخرجت من كلية رادكليف سنة ١٩٠٤.','اشتغلت في الكتابة والمحاضرات ودعم حقوق ذوي الإعاقة.'],
+ hard:['صعوبة التواصل في سنوات الطفولة الأولى.','الدراسة الجامعية بدون سمع ولا بصر.'],turn:'بداية التعلم مع آن سوليفان وطريقة التواصل باللمس.',
+ lessons:['الدعم المناسب والإصرار بيفتحوا أبواب بتبان مستحيلة.','المعلم الكويس بيغيّر حياة.'],steps:['دوّر على معلم أو مرشد في مجالك.','اتعلم بالطريقة اللي تناسبك.','قسّم المهارة الصعبة لخطوات صغيرة.'],
+ src:[['Britannica','https://www.britannica.com/biography/Helen-Keller']]},
+{id:'s11',cat:'برمجة وتكنولوجيا',e:'🐧',title:'لينوس تورفالدز: مشروع هواية بقى Linux',who:'مبرمج فنلندي',intro:'بدأ نواة نظام Linux وهو طالب كمشروع شخصي، وبقت اليوم أساس لأنظمة كتير.',
+ events:['وُلد سنة ١٩٦٩ في هلسنكي ودرس في جامعتها.','سنة ١٩٩١ أعلن عن مشروع نواة نظام تشغيل وهو في بدايته.','فتح الكود للمطورين وبقى كتير بيساهموا فيه.','سنة ٢٠٠٥ أنشأ نظام التحكم في الإصدارات Git.'],
+ hard:['البدء بمشروع ضخم بإمكانات فردية.','إدارة مساهمات متطوعين كتير.'],turn:'فتح المشروع للمجتمع وتحويله لعمل مشترك.',
+ lessons:['المشروع الصغير ممكن يكبر لو شاركته.','المجتمع بيسرّع التعلم والتطوير.'],steps:['ابدأ مشروع صغير ينفعك إنت الأول.','انشر الكود على GitHub واطلب ملاحظات.','ساهم في مشروع مفتوح المصدر ولو بتحسين بسيط.'],
+ src:[['Britannica','https://www.britannica.com/biography/Linus-Torvalds']]},
+{id:'s12',cat:'برمجة وتكنولوجيا',e:'🌐',title:'تيم برنرز-لي: فكرة الويب',who:'مهندس برمجيات بريطاني',intro:'اقترح نظاماً لمشاركة المعلومات في CERN بقى بعد كده الشبكة العنكبوتية العالمية.',
+ events:['اقترح سنة ١٩٨٩ نظام لإدارة المعلومات في مركز CERN.','طوّر أول خادم ومتصفح ويب حوالي سنة ١٩٩٠.','سنة ١٩٩٣ أتاح CERN تقنية الويب للاستخدام العام بدون رسوم.'],
+ hard:['شرح فكرة جديدة لناس مش متخيلينها.','تحويل اقتراح لنظام يشتغل فعلاً.'],turn:'إتاحة تقنية الويب للجميع بدون رسوم سنة ١٩٩٣.',
+ lessons:['فكرة بسيطة تحل مشكلة حقيقية ممكن تغيّر العالم.','المشاركة بتخلّي الفكرة تنتشر.'],steps:['حدد مشكلة حقيقية بتواجهك.','اكتب فكرة الحل في صفحة واحدة.','ابني نسخة بسيطة وجرّبها مع ناس.'],
+ src:[['Britannica','https://www.britannica.com/biography/Tim-Berners-Lee']]}
+];
+
+/* ============ الفيديوهات ============ */
+const VCATS=['نجاح وطموح','انضباط والتزام','التغلب على الفشل','ثقة بالنفس','دراسة وأهداف','ريادة أعمال','تعلم وبرمجة','بودكاست ولقاءات'];
+const SEARCHDESC='نتائج بحث على يوتيوب، اختار منها فيديو يناسبك وراجعه قبل ما تعتمد عليه.';
+const VIDEOS=[
+{id:'v1',yt:'x1HEUPDwcqM',t:'من طفل فضولي إلى عالم نال نوبل',who:'قصة د. أحمد زويل',desc:'رحلة زويل من سؤال بسيط في الطفولة لجائزة نوبل في الكيمياء.',cat:'دراسة وأهداف'},
+{id:'v2',yt:'QNgRwHRHluU',t:'زويل: خد نوبل في إيه؟',who:'د. أحمد زويل',desc:'مقطع قصير بيشرح باختصار سبب فوز زويل بنوبل.',cat:'نجاح وطموح',short:1},
+{id:'v3',yt:'7pdmQblgMVc',t:'كيف كان زويل بيذاكر دروسه؟',who:'د. أحمد زويل',desc:'مقطع قصير من لقاء له في مكتبة الإسكندرية.',cat:'دراسة وأهداف',short:1},
+{id:'v4',yt:'W0n4Qbj2u-I',t:'لحظة تسلّم زويل جائزة نوبل ١٩٩٩',who:'قناة CBC',desc:'مشهد تسلّم الجائزة سنة ١٩٩٩.',cat:'نجاح وطموح'},
+{id:'v5',yt:'f5tQZg5LCvE',t:'محمد صلاح ومجدي يعقوب',who:'صلاح × يعقوب',desc:'مقطع قصير من لقاء إنساني بين رمزين مصريين.',cat:'ثقة بالنفس',short:1},
+{id:'v6',yt:'Zs9z08OIvoM',t:'من الملعب إلى القلب',who:'صلاح × يعقوب',desc:'لقاء محمد صلاح والسير مجدي يعقوب.',cat:'ثقة بالنفس'},
+{id:'v7',yt:'wYJjoXhsf5w',t:'رسالة مجدي يعقوب للمصريين',who:'د. مجدي يعقوب',desc:'رسالة لدعم مشروع قومي للتنمية البشرية.',cat:'بودكاست ولقاءات'},
+{id:'v8',yt:'tP5ULB7qK7Y',t:'لقاء منى الشاذلي مع د. مجدي يعقوب',who:'معكم منى الشاذلي',desc:'لقاء تلفزيوني مع جراح القلب العالمي.',cat:'بودكاست ولقاءات'},
+{id:'v9',q:'إبراهيم الفقي الإصرار على النجاح وعلاج الفشل',t:'الإصرار على النجاح وعلاج الفشل',who:'د. إبراهيم الفقي',cat:'التغلب على الفشل'},
+{id:'v10',q:'إبراهيم الفقي كيف تبدأ من الصفر',t:'كيف تبدأ من الصفر',who:'د. إبراهيم الفقي',cat:'نجاح وطموح'},
+{id:'v11',q:'إبراهيم الفقي كيف تشحن طاقتك الإيجابية',t:'كيف تشحن طاقتك الإيجابية',who:'د. إبراهيم الفقي',cat:'ثقة بالنفس'},
+{id:'v12',q:'صلاح أبو المجد مفاهيم الشغف والنجاح',t:'مفاهيم الشغف والنجاح',who:'صلاح أبو المجد',cat:'نجاح وطموح'},
+{id:'v13',q:'صلاح أبو المجد تطوير الذات والنجاح',t:'تطوير الذات والعمل والنجاح',who:'صلاح أبو المجد',cat:'ريادة أعمال'},
+{id:'v14',q:'بودكاست مصري قصص نجاح وتجارب ملهمة',t:'بودكاست مصري: قصص نجاح وتجارب',who:'بودكاست وصنّاع محتوى مصريين',cat:'بودكاست ولقاءات'},
+{id:'v15',q:'بودكاست مصري الانضباط والتسويف',t:'الانضباط والتسويف',who:'محتوى مصري',cat:'انضباط والتزام'},
+{id:'v16',q:'تحفيز مصري للدراسة وتحقيق الأهداف',t:'تحفيز للدراسة وتحقيق الأهداف',who:'محتوى مصري',cat:'دراسة وأهداف'},
+{id:'v17',q:'قصص نجاح مصرية ملهمة',t:'قصص نجاح مصرية ملهمة',who:'محتوى مصري',cat:'نجاح وطموح'},
+{id:'v18',q:'بودكاست مصري تعلم البرمجة وتطوير المهارات',t:'تعلّم البرمجة وتطوير المهارات',who:'محتوى مصري',cat:'تعلم وبرمجة'}
+];
+VIDEOS.forEach(v=>{if(!v.desc)v.desc=SEARCHDESC});
+
+/* ============ مقالات طوّر نفسك ============ */
+const ARTICLES=[
+{t:'كيف تبدأ في تحقيق أهدافك؟',p:'الهدف الكبير بيخوّف لما يفضل فكرة عامة. لما تحوّله لخطوات صغيرة بمواعيد، بيبقى قابل للتنفيذ.',ex:'بدل «عايز أتعلم برمجة»، قول: «هتعلم أساسيات HTML في ١٤ يوم، ٣٠ دقيقة كل يوم».',st:['اكتب هدفك بجملة واحدة واضحة.','حدد موعد مستهدف واقعي.','قسّمه لـ ٣–٥ مهام.','ابدأ بأصغر مهمة النهارده.'],ref:'منهجية الأهداف المحددة (SMART)'},
+{t:'كيف تنظم وقتك؟',p:'التنظيم مش معناه جدول مزدحم، معناه إنك تعرف أهم حاجة وتديها أحسن وقت في يومك.',ex:'اكتب أهم ٣ مهام بالليل، واشتغل على أصعبها أول ما تصحى.',st:['اكتب مهام بكرة قبل النوم.','رتّبها حسب الأهمية.','استخدم جلسات تركيز ٢٥ دقيقة.','سيب وقت للراحة والطوارئ.'],ref:'تقنية بومودورو – فرانشيسكو شيريلو'},
+{t:'كيف تتغلب على التسويف؟',p:'التسويف غالباً هروب من شعور مش مريح زي الملل أو الخوف من الفشل، مش كسل بس.',ex:'قول لنفسك «هشتغل ٥ دقايق بس»، غالباً هتكمّل بعدها.',st:['قسّم المهمة لجزء صغير جداً.','ابعد المشتتات (موبايل/إشعارات).','ابدأ ٥ دقايق ووقّف لو عايز.','كافئ نفسك بعد الإنجاز.'],ref:'قاعدة الدقائق الخمس'},
+{t:'كيف تبني عادة جديدة؟',p:'العادة بتتبني بالتكرار الصغير الثابت، مش بمجهود كبير مرة واحدة.',ex:'عايز تقرأ؟ ابدأ بصفحتين بعد الفجر أو قبل النوم كل يوم.',st:['اختار عادة صغيرة جداً.','اربطها بعادة موجودة (بعد ما أعمل X هعمل Y).','تابعها بعلامة يومية.','متتوقفش يومين ورا بعض.'],ref:'كتاب «العادات الذرية» – جيمس كلير'},
+{t:'كيف تتعلم مهارة من الصفر؟',p:'أي مهارة بتتعلم أسرع لو قسّمتها لمهارات فرعية وطبّقت أول بأول.',ex:'لتعلّم البرمجة: ابدأ بأساسيات اللغة، وبعدين اعمل مشروع صغير بيها.',st:['حدد هدف التعلم بدقة.','قسّم المهارة لأجزاء.','تعلّم أقل قدر وطبّق فوراً.','اطلب مراجعة من حد أمهر.'],ref:'التعلم بالممارسة المتعمدة'},
+{t:'كيف تستفيد من الفشل؟',p:'الفشل معلومة عن اللي ما نفعش، لو سجّلتها واتعلمت منها بتتحول لخطوة للأمام.',ex:'لو مشروعك ماتقبلش، اسأل: إيه اللي ممكن أحسّنه المرة الجاية؟',st:['اكتب اللي حصل بدون جلد للذات.','حدد ٢–٣ أسباب ممكن تتحسن.','عدّل خطتك.','جرّب تاني بنسخة أفضل.'],ref:'قصص رولينج وجوردان في الموقع'},
+{t:'كيف تضع خطة واضحة لمستقبلك؟',p:'الخطة الجيدة بتبدأ من إنت عايز إيه بعد سنة، وبترجع للخلف لحد النهارده.',ex:'هدف السنة: أول مشروع برمجي منشور → هدف الشهر: تعلّم JavaScript → هدف الأسبوع: ٣ دروس.',st:['حدد صورة نجاحك بعد سنة.','قسّمها لأهداف ربع سنوية.','حوّلها لمهام أسبوعية.','راجع الخطة كل أسبوع.'],ref:'التخطيط العكسي'},
+{t:'كيف تطور مهاراتك في البرمجة؟',p:'البرمجة بتتعلّم بالكتابة والتجريب والمشاريع، مش بمشاهدة الدروس بس.',ex:'بعد ما تتعلم الـ DOM، ابني قائمة مهام صغيرة بدل ما تكمل فيديو جديد.',st:['اتقن أساسيات لغة واحدة.','ابني مشاريع صغيرة كل أسبوعين.','اقرأ كود غيرك على GitHub.','اتعلم Git ونظّم شغلك.','حل مسائل خوارزميات بانتظام.'],ref:'مستندات MDN وGitHub'},
+{t:'كيف تحافظ على الاستمرار دون الاعتماد على الحماس فقط؟',p:'الحماس بيروح ويجي، لكن النظام والعادات هما اللي بيكمّلوا بيك.',ex:'حتى في يوم تعبان، أنجز نسخة مصغّرة: ١٠ دقايق بدل ساعة.',st:['حدد وقت ثابت للشغل.','حضّر بيئتك من الليلة اللي قبلها.','قلّل الحد الأدنى في الأيام الصعبة.','تابع تقدمك بصرياً.'],ref:'مبدأ الحد الأدنى اليومي'}
+];
+
+/* ============ المصادر ============ */
+const SOURCES=[['TED Talks','أفكار وتجارب ملهمة من متحدثين حول العالم.','https://www.ted.com/talks'],['مؤسسة هنداوي','كتب عربية متاحة مجاناً وبشكل قانوني.','https://www.hindawi.org'],['Open Library','مكتبة رقمية لاستعارة الكتب قانونياً.','https://openlibrary.org'],['خان أكاديمي بالعربي','دروس تعليمية في مواد كتير.','https://ar.khanacademy.org'],['إدراك','كورسات عربية مجانية.','https://www.edraak.org'],['الموقع الرسمي لجائزة نوبل','سير وحقائق موثقة عن الحاصلين على نوبل.','https://www.nobelprize.org'],['Britannica','مقالات تعريفية موثقة عن الشخصيات والعلوم.','https://www.britannica.com'],['MDN Web Docs','المرجع الأفضل لتعلم الويب والبرمجة.','https://developer.mozilla.org/ar/']];
+
+/* ============ عني (قابل للتعديل) ============ */
+const ABOUT={name:'Youssef Rady',interests:'البرمجة، التكنولوجيا، تطوير الذات، التعلم المستمر، وصناعة المحتوى الملهم.',goal:'إنشاء مساحة رقمية تجمع بين الإلهام والمعرفة، وتساعد الشباب على اكتشاف إمكاناتهم والعمل على أهدافهم.',
+ journey:['تعلّم البرمجة والتقنية باستمرار.','بناء الموقع الشخصي.','بناء منصة YOUSSEF RADY التحفيزية.'],projects:['منصة YOUSSEF RADY التحفيزية (هذا الموقع)','الموقع الشخصي']};
+
+/* ============ أدوات ============ */
+const $=id=>document.getElementById(id);
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=s=>String(s).replace(/[\u064B-\u065F]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').toLowerCase();
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const dayKey=()=>new Date().toISOString().slice(0,10);
+const dayNum=()=>Math.floor((Date.now()-new Date(new Date().getFullYear(),0,0))/864e5);
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
+const modal=$('modal'),mBox=$('mBox');
+function openModal(h){mBox.innerHTML=h+'<button class="close" id="mClose">إغلاق</button>';modal.classList.add('open');$('mClose').onclick=closeModal;mBox.scrollTop=0}
+function closeModal(){modal.classList.remove('open');mBox.innerHTML=''}
+modal.onclick=e=>{if(e.target===modal)closeModal()};addEventListener('keydown',e=>e.key==='Escape'&&(closeModal(),toggleDrawer(false)));
+const _p=String.fromCharCode(50,48,49,49,48,49,56,53,48,49,51,52);
+
+/* القائمة */
+const burger=$('burger'),drawer=$('drawer'),overlay=$('overlay');
+function toggleDrawer(f){burger.classList.toggle('on',f);drawer.classList.toggle('on',f);overlay.classList.toggle('on',f)}
+burger.onclick=()=>toggleDrawer(!drawer.classList.contains('on'));overlay.onclick=()=>toggleDrawer(false);
+drawer.querySelectorAll('nav a').forEach(a=>a.onclick=()=>toggleDrawer(false));
+
+/* المفضلة */
+let favs=store.get('favs2',{q:[],s:[],v:[]});
+const isFav=(t,k)=>favs[t].includes(String(k));
+function toggleFav(t,k){k=String(k);favs[t]=isFav(t,k)?favs[t].filter(x=>x!==k):[...favs[t],k];store.set('favs2',favs);refreshFavs();renderFavs();updDailyFav()}
+function refreshFavs(){document.querySelectorAll('[data-fav]').forEach(b=>{const[t,k]=b.dataset.fav.split(':');b.textContent=isFav(t,k)?'❤️':'🤍'})}
+const favBtn=(t,k)=>`<button class="fav" data-fav="${t}:${k}" aria-label="مفضلة">${isFav(t,k)?'❤️':'🤍'}</button>`;
+document.addEventListener('click',e=>{const b=e.target.closest('[data-fav]');if(b){const[t,k]=b.dataset.fav.split(':');toggleFav(t,k)}});
+
+/* مشاركة ونسخ */
+async function copyText(t){try{await navigator.clipboard.writeText(t);toast('اتنسخ ✅')}catch(e){toast('مقدرتش أنسخ')}}
+async function shareText(t){const txt=t+'\n— YOUSSEF RADY | Inspire Your Future';if(navigator.share){try{await navigator.share({text:txt})}catch(e){}}else window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank')}
+
+/* مقولة -> صورة */
+async function quoteImage(text){
+  try{await document.fonts.load('bold 54px Cairo');await document.fonts.load('bold 36px Orbitron')}catch(e){}
+  const c=document.createElement('canvas');c.width=1080;c.height=1080;const x=c.getContext('2d');
+  const g=x.createLinearGradient(0,0,1080,1080);g.addColorStop(0,'#0b0b0e');g.addColorStop(1,'#1b1608');x.fillStyle=g;x.fillRect(0,0,1080,1080);
+  const r=x.createRadialGradient(540,500,20,540,500,560);r.addColorStop(0,'rgba(230,196,106,.22)');r.addColorStop(1,'rgba(230,196,106,0)');x.fillStyle=r;x.fillRect(0,0,1080,1080);
+  x.strokeStyle='#e6c46a';x.lineWidth=3;x.strokeRect(40,40,1000,1000);x.strokeStyle='rgba(230,196,106,.35)';x.lineWidth=1;x.strokeRect(58,58,964,964);
+  x.direction='rtl';x.textAlign='center';x.fillStyle='#e6c46a';x.font='bold 150px serif';x.fillText('“',540,230);
+  x.fillStyle='#f6efd8';x.font='bold 54px Cairo, sans-serif';
+  const words=text.split(' ');let lines=[],line='';
+  words.forEach(w=>{const t=line?line+' '+w:w;if(x.measureText(t).width>840&&line){lines.push(line);line=w}else line=t});lines.push(line);
+  const lh=92,start=540-(lines.length*lh)/2+30;lines.forEach((l,i)=>x.fillText(l,540,start+i*lh));
+  x.direction='ltr';x.fillStyle='#e6c46a';x.font='bold 38px Orbitron, sans-serif';x.fillText('YOUSSEF RADY',540,935);
+  x.fillStyle='#a7a395';x.font='24px Orbitron, sans-serif';x.fillText('INSPIRE YOUR FUTURE',540,980);
+  return c}
+async function openImage(text){
+  const c=await quoteImage(text);
+  openModal('<h3>🖼️ صورة المقولة</h3><div id="cvHost"></div><div class="actions"><button id="dlImg">⬇ تنزيل الصورة</button><button id="shImg">📤 مشاركة</button></div>');
+  $('cvHost').appendChild(c);
+  const blob=()=>new Promise(res=>c.toBlob(res,'image/png'));
+  $('dlImg').onclick=async()=>{const b=await blob(),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='youssef-rady-quote.png';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)};
+  $('shImg').onclick=async()=>{const b=await blob(),f=new File([b],'quote.png',{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[f]})){try{await navigator.share({files:[f]})}catch(e){}}else toast('المشاركة المباشرة مش متاحة هنا، نزّل الصورة وابعتها')}}
+
+/* بطاقة مقولة + مودال */
+function openQuote(q){openModal(`<span class="chip">${q.c}</span><p style="font-size:1.5rem;line-height:2;margin:14px 0">“${esc(q.t)}”</p><div class="actions"><button id="mc">📋 نسخ</button><button id="ms">📤 مشاركة</button><button id="mi">🖼️ صورة</button>${favBtn('q',q.id)}</div>`);
+  $('mc').onclick=()=>copyText(q.t);$('ms').onclick=()=>shareText(q.t);$('mi').onclick=()=>openImage(q.t)}
+function quoteCard(q){const d=document.createElement('div');d.className='qcard glass';
+  d.innerHTML=`<p>“${q.t}”</p><div class="row"><span class="chip">${q.c}</span><span><button class="mini" data-a="c" aria-label="نسخ">📋</button><button class="mini" data-a="i" aria-label="صورة">🖼️</button>${favBtn('q',q.id)}</span></div>`;
+  d.querySelector('[data-a=c]').onclick=()=>copyText(q.t);d.querySelector('[data-a=i]').onclick=()=>openImage(q.t);return d}
+
+/* مقولة اليوم */
+let cur=dayNum()%QUOTES.length;
+$('today').textContent=new Date().toLocaleDateString('ar-EG',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+function showDaily(i){const b=$('dq');b.style.opacity=0;setTimeout(()=>{cur=i;b.textContent=QUOTES[i].t;$('dcat').textContent=QUOTES[i].c;b.style.opacity=1;updDailyFav()},250)}
+function updDailyFav(){const b=$('favQ'),on=isFav('q',cur);b.textContent=on?'❤️ في المفضلة':'🤍 مفضلة';b.classList.toggle('on',on)}
+$('newQ').onclick=()=>{let n;do{n=Math.floor(Math.random()*QUOTES.length)}while(n===cur);showDaily(n)};
+$('copyQ').onclick=()=>copyText(QUOTES[cur].t);$('shareQ').onclick=()=>shareText(QUOTES[cur].t);$('imgQ').onclick=()=>openImage(QUOTES[cur].t);$('favQ').onclick=()=>toggleFav('q',cur);
+
+/* تحدي اليوم */
+$('chText').textContent=CHALLENGES[dayNum()%CHALLENGES.length];
+let done=store.get('done',[]);
+function streak(){let s=0,d=new Date();if(!done.includes(dayKey()))d.setDate(d.getDate()-1);while(done.includes(d.toISOString().slice(0,10))){s++;d.setDate(d.getDate()-1)}return s}
+const drawStreak=()=>$('streak').textContent='🔥 '+streak()+' يوم';
+$('chBox').checked=done.includes(dayKey());
+$('chBox').onchange=e=>{done=e.target.checked?[...new Set([...done,dayKey()])]:done.filter(x=>x!==dayKey());store.set('done',done);drawStreak();if(e.target.checked)toast('برافو عليك! 🎉')};drawStreak();
+
+/* فلاتر عامة */
+function filters(box,cats,cb){box.innerHTML=['الكل',...cats].map((c,i)=>`<button class="${i?'':'on'}" data-c="${c}">${c}</button>`).join('');
+  box.querySelectorAll('button').forEach(b=>b.onclick=()=>{box.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');cb(b.dataset.c)})}
+
+/* القصص */
+const sIdx=c=>Math.max(0,SCATS.indexOf(c));
+function storyCard(s){const d=document.createElement('div');d.className='card glass';
+  d.innerHTML=`<div class="poster p${sIdx(s.cat)}" role="img" aria-label="${esc(s.title)}">${s.e}</div><span class="chip" style="align-self:flex-start">${s.cat}</span><h3>${s.title}</h3><small>${s.who}</small><p>${s.intro}</p><div class="row"><button class="btn btn-line btn-sm">اقرأ القصة</button>${favBtn('s',s.id)}</div>`;
+  d.querySelector('.btn').onclick=()=>openStory(s);return d}
+function openStory(s){const li=a=>'<ul>'+a.map(x=>`<li>${x}</li>`).join('')+'</ul>';
+  openModal(`<div class="poster p${sIdx(s.cat)}" role="img" aria-label="${esc(s.title)}">${s.e}</div><span class="chip">${s.cat}</span><h3>${s.title}</h3><small style="color:var(--gold)">${s.who}</small>
+  <p style="margin-top:10px">${s.intro}</p><h4>📌 أحداث القصة</h4>${li(s.events)}<h4>⚠️ الصعوبات</h4>${li(s.hard)}<h4>🔥 نقطة التحول</h4><p>${s.turn}</p>
+  <h4>💡 الدروس المستفادة</h4><div class="lesson">${li(s.lessons)}</div><h4>✅ خطوات عملية تقدر تطبقها</h4><ol>${s.steps.map(x=>`<li>${x}</li>`).join('')}</ol>
+  <h4>📚 المصادر</h4><ul>${s.src.map(x=>`<li><a href="${x[1]}" target="_blank" rel="noopener">${x[0]}</a></li>`).join('')}</ul>
+  <div class="actions" style="justify-content:flex-start;margin-top:12px"><button id="ssh">📤 مشاركة</button>${favBtn('s',s.id)}</div>`);
+  $('ssh').onclick=()=>shareText(s.title+' — '+s.intro)}
+function renderStories(c='الكل'){const b=$('sGrid');b.innerHTML='';STORIES.filter(s=>c==='الكل'||s.cat===c).forEach(s=>b.appendChild(storyCard(s)))}
+filters($('sFilters'),SCATS,renderStories);renderStories();
+STORIES.slice(0,3).forEach(s=>$('latestGrid').appendChild(storyCard(s)));
+
+/* الفيديوهات */
+const ytSearch=q=>'https://www.youtube.com/results?search_query='+encodeURIComponent(q);
+function videoCard(v){const d=document.createElement('div');d.className='card glass';
+  const thumb=v.yt?`<div class="vthumb p3" data-play><img src="https://i.ytimg.com/vi/${v.yt}/hqdefault.jpg" alt="${esc(v.t)}" loading="lazy" onerror="this.style.display='none'"><div class="pl">▶</div></div>`:`<div class="vthumb p${VCATS.indexOf(v.cat)%8}" role="img" aria-label="${esc(v.t)}">🔎</div>`;
+  d.innerHTML=`${thumb}<span class="chip" style="align-self:flex-start">${v.cat}${v.yt?'':' · نتائج بحث'}</span><h3>${v.t}</h3><small>${v.who}</small><p>${v.desc}</p><div class="row">${v.yt?'<button class="btn btn-line btn-sm" data-play>▶ شاهد</button>':`<a class="btn btn-line btn-sm" href="${ytSearch(v.q)}" target="_blank" rel="noopener">افتح على يوتيوب ↗</a>`}${favBtn('v',v.id)}</div>`;
+  d.querySelectorAll('[data-play]').forEach(el=>el.onclick=()=>openVideo(v));return d}
+function openVideo(v){openModal(`<span class="chip">${v.cat}</span><h3>${v.t}</h3><small style="color:var(--gold)">${v.who}</small><div class="frame ${v.short?'tall':''}"><iframe src="https://www.youtube-nocookie.com/embed/${v.yt}?autoplay=1&rel=0" title="${esc(v.t)}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div><p>${v.desc}</p><a href="https://www.youtube.com/watch?v=${v.yt}" target="_blank" rel="noopener">▶ لو الفيديو مش بيشتغل هنا، افتحه على يوتيوب</a><div class="actions" style="justify-content:flex-start;margin-top:10px">${favBtn('v',v.id)}</div>`)}
+function renderVideos(c='الكل'){const b=$('vGrid');b.innerHTML='';VIDEOS.filter(v=>c==='الكل'||v.cat===c).forEach(v=>b.appendChild(videoCard(v)))}
+filters($('vFilters'),VCATS,renderVideos);renderVideos();
+$('fThumb').onclick=()=>{$('fThumb').outerHTML='<div class="frame" style="width:100%"><iframe src="https://www.youtube-nocookie.com/embed/x1HEUPDwcqM?autoplay=1&rel=0" title="فيديو مميز" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>'};
+
+/* مكتبة المقولات */
+const PAGE=12;let qCat='الكل',qTerm='',qShown=PAGE;
+filters($('qFilters'),Object.keys(QDATA),c=>{qCat=c;qShown=PAGE;renderQuotes()});
+function renderQuotes(){const list=QUOTES.filter(q=>(qCat==='الكل'||q.c===qCat)&&(!qTerm||norm(q.t).includes(qTerm)));const b=$('qGrid');b.innerHTML='';
+  list.slice(0,qShown).forEach(q=>b.appendChild(quoteCard(q)));$('moreBtn').style.display=list.length>qShown?'inline-block':'none';
+  $('qCount').textContent=list.length?`عرض ${Math.min(qShown,list.length)} من ${list.length} مقولة`:'مفيش نتايج، جرّب كلمة تانية.'}
+$('qSearch').oninput=e=>{qTerm=norm(e.target.value.trim());qShown=PAGE;renderQuotes()};$('moreBtn').onclick=()=>{qShown+=PAGE;renderQuotes()};
+
+/* المقالات */
+$('artList').innerHTML=ARTICLES.map(a=>`<details class="art glass"><summary>${a.t}</summary><p>${a.p}</p><div class="ex"><b>مثال واقعي:</b> ${a.ex}</div><b>خطوات عملية:</b><ol>${a.st.map(x=>`<li>${x}</li>`).join('')}</ol><small>📚 مرجع: ${a.ref}</small></details>`).join('');
+
+/* الأهداف */
+let goals=store.get('goals',[]);
+const saveGoals=()=>{store.set('goals',goals);renderGoals()};
+$('goalForm').onsubmit=e=>{e.preventDefault();const t=$('gTitle').value.trim();if(!t)return;goals.push({id:uid(),title:t,due:$('gDue').value,tasks:[]});e.target.reset();saveGoals()};
+function renderGoals(){const box=$('goalList');if(!goals.length){box.innerHTML='<p class="empty" style="grid-column:1/-1">لسه مفيش أهداف. اكتب هدفك الأول فوق 👆</p>';return}
+  box.innerHTML=goals.map(g=>{const n=g.tasks.length,d=g.tasks.filter(t=>t.done).length,p=n?Math.round(d/n*100):0;
+  return `<div class="goal glass" data-g="${g.id}"><div class="g-head"><h3>🎯 ${esc(g.title)}</h3><button class="x" data-act="delGoal" aria-label="حذف الهدف">🗑️</button></div><small style="color:var(--muted)">${g.due?'الموعد المستهدف: '+g.due:'بدون موعد'}</small>
+  <div class="pbar"><i style="width:${p}%"></i></div><div class="pnum">${p}% (${d}/${n})</div>
+  <ul class="tasks">${g.tasks.map(t=>`<li data-t="${t.id}"><label><input type="checkbox" data-act="toggle" ${t.done?'checked':''}><span class="${t.done?'done':''}">${esc(t.t)}</span></label><small>${t.due||''}</small><button class="x" data-act="delTask" aria-label="حذف">✕</button></li>`).join('')}</ul>
+  <form class="taskForm"><input placeholder="مهمة صغيرة..." required><input type="date" aria-label="موعد المهمة"><button class="btn btn-gold btn-sm" type="submit">＋</button></form></div>`}).join('')}
+const gl=$('goalList');
+gl.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(!b)return;const g=goals.find(x=>x.id===b.closest('[data-g]').dataset.g);if(!g)return;
+  if(b.dataset.act==='delGoal'&&confirm('تحذف الهدف ده؟')){goals=goals.filter(x=>x!==g);saveGoals()}
+  if(b.dataset.act==='delTask'){g.tasks=g.tasks.filter(t=>t.id!==b.closest('[data-t]').dataset.t);saveGoals()}});
+gl.addEventListener('change',e=>{if(e.target.dataset.act!=='toggle')return;const g=goals.find(x=>x.id===e.target.closest('[data-g]').dataset.g),t=g.tasks.find(x=>x.id===e.target.closest('[data-t]').dataset.t);t.done=e.target.checked;saveGoals()});
+gl.addEventListener('submit',e=>{e.preventDefault();const f=e.target,g=goals.find(x=>x.id===f.closest('[data-g]').dataset.g),[a,d]=f.querySelectorAll('input');if(!a.value.trim())return;g.tasks.push({id:uid(),t:a.value.trim(),due:d.value,done:false});saveGoals()});
+renderGoals();
+
+/* إنجازات الأسبوع */
+let wins=store.get('wins',[]);
+function renderWins(){const wk=Date.now()-7*864e5;$('winCount').textContent=wins.filter(w=>new Date(w.d).getTime()>=wk).length;$('winList').innerHTML=wins.slice(0,12).map(w=>`<li><small>${w.d}</small>${esc(w.t)}</li>`).join('')||'<li>سجّل أول إنجاز لك الأسبوع ده.</li>'}
+$('winForm').onsubmit=e=>{e.preventDefault();const t=$('winText').value.trim();if(!t)return;wins.unshift({d:dayKey(),t});store.set('wins',wins);e.target.reset();renderWins()};renderWins();
+
+/* تحديات الأسبوع */
+let wch=store.get('wch',{});
+function renderWeek(){$('weekList').innerHTML=WEEK_CH.map(c=>{const st=wch[c.id]||{on:false,days:[0,0,0,0,0,0,0]},n=st.days.filter(Boolean).length;
+  return `<div class="wc glass" data-w="${c.id}"><h3>${c.t}</h3><p>${c.d}</p>${st.on?`<div class="days">${st.days.map((v,i)=>`<button class="day ${v?'on':''}" data-i="${i}" aria-label="يوم ${i+1}">${i+1}</button>`).join('')}</div><div class="pnum" style="margin-top:6px">${n}/7 ${n===7?'🏆 خلّصت التحدي!':''}</div>`:'<button class="btn btn-gold btn-sm" data-join>انضم للتحدي</button>'}</div>`}).join('')}
+$('weekList').onclick=e=>{const w=e.target.closest('[data-w]');if(!w)return;const id=w.dataset.w;wch[id]=wch[id]||{on:false,days:[0,0,0,0,0,0,0]};
+  if(e.target.matches('[data-join]'))wch[id].on=true;const d=e.target.closest('.day');if(d){const i=+d.dataset.i;wch[id].days[i]=wch[id].days[i]?0:1}store.set('wch',wch);renderWeek()};renderWeek();
+
+/* ركن الهدوء */
+let mode='focus',left=25*60,tm=null,ac,srcN,lfo,gainN;
+const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+const drawT=()=>{$('tDisp').textContent=fmt(left);$('tMode').textContent=mode==='focus'?'🎯 جلسة تركيز':'☕ استراحة'};
+const ctx=()=>{ac=ac||new(window.AudioContext||window.webkitAudioContext)();ac.resume&&ac.resume();return ac};
+function chime(){try{const a=ctx(),o=a.createOscillator(),g=a.createGain();o.frequency.value=660;g.gain.setValueAtTime(.12,a.currentTime);g.gain.exponentialRampToValueAtTime(.0001,a.currentTime+1);o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+1)}catch(e){}}
+function setMode(m){mode=m;left=Math.max(1,+($(m==='focus'?'fMin':'bMin').value)||1)*60;drawT()}
+function stopT(){clearInterval(tm);tm=null;$('tStart').textContent='▶ ابدأ'}
+$('tStart').onclick=()=>{if(tm){clearInterval(tm);tm=null;$('tStart').textContent='▶ كمّل';return}$('tStart').textContent='⏸ إيقاف مؤقت';
+  tm=setInterval(()=>{left--;drawT();if(left<=0){stopT();chime();toast(mode==='focus'?'خلّصت جلسة التركيز! خد استراحة ☕':'الاستراحة خلصت، يلا نرجع 🎯');setMode(mode==='focus'?'break':'focus')}},1000)};
+$('tReset').onclick=()=>{stopT();setMode(mode)};$('mFocus').onclick=()=>{stopT();setMode('focus')};$('mBreak').onclick=()=>{stopT();setMode('break')};
+$('fMin').onchange=$('bMin').onchange=()=>{if(!tm)setMode(mode)};
+$('newPhrase').onclick=()=>{$('phrase').textContent=PHRASES[Math.floor(Math.random()*PHRASES.length)]};
+$('bgs').querySelectorAll('button').forEach(b=>b.onclick=()=>{$('calmBox').className='calm glass '+b.dataset.b});
+function stopSound(){try{srcN&&srcN.stop();lfo&&lfo.stop()}catch(e){}srcN=lfo=null}
+function startSound(k){stopSound();if(k==='off')return;const a=ctx(),len=a.sampleRate*3,buf=a.createBuffer(1,len,a.sampleRate),d=buf.getChannelData(0);let last=0;
+  for(let i=0;i<len;i++){const w=Math.random()*2-1;if(k==='rain')d[i]=w;else{last=(last+.02*w)/1.02;d[i]=last*3.5}}
+  srcN=a.createBufferSource();srcN.buffer=buf;srcN.loop=true;const f=a.createBiquadFilter();f.type=k==='rain'?'bandpass':'lowpass';f.frequency.value=k==='rain'?2200:(k==='wind'?600:450);if(k==='rain')f.Q.value=.4;
+  gainN=a.createGain();gainN.gain.value=+$('vol').value;srcN.connect(f);f.connect(gainN);gainN.connect(a.destination);
+  if(k!=='rain'){lfo=a.createOscillator();const lg=a.createGain();lfo.frequency.value=k==='waves'?.12:.07;lg.gain.value=.12;lfo.connect(lg);lg.connect(gainN.gain);lfo.start()}srcN.start()}
+document.querySelectorAll('[data-snd]').forEach(b=>b.onclick=()=>startSound(b.dataset.snd));
+$('vol').oninput=e=>{if(gainN)gainN.gain.value=+e.target.value};
+
+/* المفضلة */
+function renderFavs(){
+  const fq=$('favQ2'),fs=$('favS'),fv=$('favV');fq.innerHTML=fs.innerHTML=fv.innerHTML='';
+  favs.q.forEach(k=>{const q=QUOTES[+k];if(q)fq.appendChild(quoteCard(q))});
+  favs.s.forEach(k=>{const s=STORIES.find(x=>x.id===k);if(s)fs.appendChild(storyCard(s))});
+  favs.v.forEach(k=>{const v=VIDEOS.find(x=>x.id===k);if(v)fv.appendChild(videoCard(v))});
+  $('favEmpty').style.display=(favs.q.length+favs.s.length+favs.v.length)?'none':'block'}
+
+/* البحث العام */
+$('gSearch').oninput=e=>{const t=norm(e.target.value.trim()),out=$('gRes');out.innerHTML='';if(!t)return;const res=[];
+  STORIES.forEach(s=>{if(norm(s.title+s.who+s.intro+s.cat).includes(t))res.push(['📖',s.title,s.cat,()=>openStory(s)])});
+  VIDEOS.forEach(v=>{if(norm(v.t+v.who+v.desc+v.cat).includes(t))res.push(['🎬',v.t,v.cat,()=>v.yt?openVideo(v):window.open(ytSearch(v.q),'_blank')])});
+  QUOTES.forEach(q=>{if(norm(q.t).includes(t))res.push(['💬',q.t,q.c,()=>openQuote(q)])});
+  if(!res.length){out.innerHTML='<p class="empty">مفيش نتايج، جرّب كلمة تانية.</p>';return}
+  res.slice(0,30).forEach(r=>{const b=document.createElement('button');b.innerHTML=`<span>${r[0]}</span><span>${esc(r[1])}</span><small>${r[2]}</small>`;b.onclick=r[3];out.appendChild(b)});
+  if(res.length>30){const p=document.createElement('p');p.className='empty';p.textContent='+ '+(res.length-30)+' نتيجة تانية، دقّق البحث أكتر.';out.appendChild(p)}};
+
+/* المصادر + عني */
+$('srcGrid').innerHTML=SOURCES.map(s=>`<a class="src glass" href="${s[2]}" target="_blank" rel="noopener"><h3>${s[0]} ↗</h3><p>${s[1]}</p></a>`).join('');
+$('aboutBox').innerHTML=`<h3 style="font-family:Orbitron,sans-serif;color:var(--gold)">${ABOUT.name}</h3><p><b>الاهتمامات:</b> ${ABOUT.interests}</p><p><b>الهدف:</b> ${ABOUT.goal}</p>
+ <p><b>الرحلة الشخصية:</b></p><div class="tl">${ABOUT.journey.map(j=>`<div>${j}</div>`).join('')}</div><p style="margin-top:12px"><b>المشاريع:</b> ${ABOUT.projects.join(' · ')}</p>`;
+
+/* التواصل */
+$('waBtn').onclick=()=>window.open('https://wa.me/'+_p+'?text='+encodeURIComponent('أهلاً يوسف، وصلتلك من موقعك 👋'),'_blank');
+$('form').onsubmit=e=>{e.preventDefault();const name=$('fName').value.trim().replace(/\s+/g,' '),idea=$('fIdea').value.trim(),msg=$('fMsg').value.trim();
+  if(name.split(' ').length<3){toast('اكتب اسمك الثلاثي من فضلك');$('fName').focus();return}
+  window.open('https://wa.me/'+_p+'?text='+encodeURIComponent(`💡 فكرة جديدة من موقع YOUSSEF RADY\n\n👤 الاسم: ${name}\n📝 اسم الفكرة: ${idea}\n💬 الرسالة: ${msg}`),'_blank');e.target.reset();toast('شكراً لمشاركتك 💛')};
+
+/* الخصوصية */
+$('privBtn').onclick=()=>openModal('<h3>🔒 سياسة الخصوصية</h3><p>الموقع مبيجمعش بيانات عنك على أي سيرفر.</p><ul><li>المفضلة والأهداف والإنجازات والتحديات بتتحفظ على جهازك فقط (التخزين المحلي للمتصفح) وتقدر تمسحها من إعدادات المتصفح.</li><li>فورم «شاركنا فكرتك» بيفتح واتساب برسالة جاهزة، ومبيتبعتش حاجة غير لما تدوس إرسال هناك.</li><li>الفيديوهات المضمّنة والروابط الخارجية (يوتيوب وغيره) ليها سياسات خصوصية خاصة بيها.</li><li>مبنطلبش أي بيانات شخصية غير ضرورية.</li></ul>');
+
+/* تشغيل */
+$('dq').textContent=QUOTES[cur].t;$('dcat').textContent=QUOTES[cur].c;updDailyFav();
+renderQuotes();renderFavs();drawT();
+$('sQ').textContent=QUOTES.length;$('qTotal').textContent=QUOTES.length+' مقولة في '+Object.keys(QDATA).length+' أقسام';
+$('sS').textContent=STORIES.length;$('sV').textContent=VIDEOS.length;$('sA').textContent=ARTICLES.length;$('year').textContent=new Date().getFullYear();
+
+/* تمرير: شريط التقدم + زر لفوق + القائمة النشطة + ظهور */
+const prog=$('progress'),topB=$('top'),links=[...drawer.querySelectorAll('nav a')],secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+addEventListener('scroll',()=>{const m=document.documentElement.scrollHeight-innerHeight;prog.style.width=(m>0?scrollY/m*100:0)+'%';topB.classList.toggle('show',scrollY>600);
+  let c=0;secs.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<160)c=i});links.forEach((a,i)=>a.classList.toggle('active',i===c))});
+topB.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(r=>io.observe(r));
+</script>
+</body>
+</html>
